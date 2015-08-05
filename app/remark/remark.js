@@ -73,7 +73,7 @@ angular.module('myApp.remark', ['ngRoute'])
 
 .factory('Remark', ['$resource',
     function($resource) {
-        return $resource('/namesandsongs/api/remark/:id', {
+        return $resource('/api/s/remark/:id', {
             id: '@id'
         }, {
             get: {

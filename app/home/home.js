@@ -29,7 +29,7 @@ angular.module('myApp.home', ['ngRoute'])
 
 .factory('Item', ['$resource',
     function($resource) {
-        return $resource('/namesandsongs/api/item/:id', {
+        return $resource('/api/s/item/:id', {
             id: '@id'
         }, {
             get: {

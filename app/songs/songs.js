@@ -66,7 +66,7 @@ angular.module('myApp.songs', ['ngRoute', 'ngResource'])
             });
         }
 
-        $http.get('/namesandsongs/api/song/count', {
+        $http.get('/api/s/song/count', {
             params: {
                 filterArtist: $scope.artist,
                 filterTitle: $scope.title
@@ -92,7 +92,7 @@ angular.module('myApp.songs', ['ngRoute', 'ngResource'])
         }
 
         function filterArtist() {
-            $http.get('/namesandsongs/api/song/count', {
+            $http.get('/api/s/song/count', {
                 params: {
                     filterArtist: $scope.artist,
                     filterTitle: $scope.title
@@ -124,7 +124,7 @@ angular.module('myApp.songs', ['ngRoute', 'ngResource'])
         }
 
         function filterTitle() {
-            $http.get('/namesandsongs/api/song/count', {
+            $http.get('/api/s/song/count', {
                 params: {
                     filterArtist: $scope.artist,
                     filterTitle: $scope.title
@@ -211,7 +211,7 @@ angular.module('myApp.songs', ['ngRoute', 'ngResource'])
 
 .factory('Song', ['$resource',
     function($resource) {
-        return $resource('/namesandsongs/api/song/:id', {
+        return $resource('/api/s/song/:id', {
             id: '@id'
         }, {
             query: {

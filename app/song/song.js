@@ -47,7 +47,7 @@ angular.module('myApp.song', ['ngRoute', 'ngResource'])
 
 .factory('SongDetail', ['$resource',
     function($resource) {
-        return $resource('/namesandsongs/api/song/:id', {}, {
+        return $resource('/api/s/song/:id', {}, {
             query: {
                 method: 'GET',
                 params: {

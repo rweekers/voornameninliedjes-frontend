@@ -42,7 +42,7 @@ function storeVisit($http, Data) {
 
     $http({
         // url: 'http://127.0.0.1:8180/voornaaminliedje/api/visit/add',
-        url: '/namesandsongs/api/visit/add',
+        url: '/api/s/visit/add',
         method: "POST",
         params: {
             userAgent: navigator.userAgent
@@ -56,7 +56,7 @@ function storeVisit($http, Data) {
 function storeSearchInstruction($http, argument, visit) {
 
     $http({
-        url: '/namesandsongs/api/searchInstruction/add',
+        url: '/api/s/searchInstruction/add',
         method: 'POST',
         params: {
             argument: argument,
@@ -83,7 +83,7 @@ function checkVisit() {
 
 function findVisit($http, Data) {
     $http({
-        url: '/namesandsongs/api/visit/find',
+        url: '/api/s/visit/find',
         method: 'GET',
         params: {
             userAgent: navigator.userAgent

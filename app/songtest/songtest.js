@@ -16,7 +16,7 @@ angular.module('myApp.songtest', ['ngRoute', 'ngResource'])
         var start = new Date().getTime();
         var start2 = new Date().getTime();
 
-        $http.get('/namesandsongs/api/song').success(function(data){
+        $http.get('/api/s/song').success(function(data){
             $scope.songs = data;
             var end = new Date().getTime();
             var time = end - start;

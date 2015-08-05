@@ -56,7 +56,7 @@ angular.module('myApp.suggestion', ['ngRoute'])
 
 .factory('Suggestion', ['$resource',
     function($resource) {
-        return $resource('/namesandsongs/api/suggestion/:id', {
+        return $resource('/api/s/suggestion/:id', {
             id: '@id'
         }, {
             get: {
