@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": ["dist", "tmp", "node_modules", "bower_components"],
+			"file_exclude_patterns": ["npm-debug.log", "testem.log"]
+		}
+	]
+}

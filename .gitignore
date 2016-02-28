@@ -1,8 +1,12 @@
 logs/*
 !.gitkeep
+app/*.js
+app/*.map
+app/*/*.js
+app/*/*.map
 node_modules/
 bower_components/
 tmp
 .DS_Store
 .idea
-voornameninliedjes-frontend-angular.sublime-workspace
+voornameninliedjes-frontend.sublime-workspace
