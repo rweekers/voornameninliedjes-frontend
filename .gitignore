@@ -1,9 +1,6 @@
 logs/*
 !.gitkeep
-app/*.js
-app/*.map
-app/*/*.js
-app/*/*.map
+dist
 node_modules/
 bower_components/
 tmp
