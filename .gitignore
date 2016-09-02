@@ -4,6 +4,7 @@ dist
 node_modules/
 bower_components/
 tmp
+typings
 .DS_Store
 .idea
 voornameninliedjes-frontend.sublime-workspace
