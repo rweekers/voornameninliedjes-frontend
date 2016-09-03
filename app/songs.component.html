@@ -1,1 +1,6 @@
-<p>Hier komen de liedjes</p>
+<ul>
+  <li *ngFor="let song of songs">
+    <h2>{{song.title}}</h2>
+    <h3>{{song.artist}}</h3>
+  </li>
+</ul>
