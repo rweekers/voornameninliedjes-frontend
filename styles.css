@@ -1,14 +1,22 @@
 /* Master Styles */
+body {
+  background-color: #555;
+}
+
 h1 {
-  color: #369;
+  color: #FF6E27;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
 h2, h3 {
-  color: #444;
+  color: #FFA61A;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
+h3 {
+  color: #E87B18;
+}
+
 body {
   margin: 2em;
 }
@@ -16,4 +24,8 @@ body {
 p {
   color: #ccc;
   font-size: 150%;
+}
+
+ul {
+  list-style: none;
 }
