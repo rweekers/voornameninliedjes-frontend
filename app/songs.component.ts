@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Song } from './song';
-import { SONGS } from './mocks';
+import { SongDataService } from './song-data.service';
 
 @Component({
   selector: 'songs',
@@ -10,7 +10,9 @@ import { SONGS } from './mocks';
 export class SongsComponent {
   songs: Song[];
 
+  constructor(private songDataService: SongDataService) { }
+
   ngOnInit() {
-    this.songs = SONGS;
+    this.songs = this.songDataService.getSongs();
   }
 }
