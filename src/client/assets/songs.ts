@@ -1,4 +1,4 @@
-import { Song } from './song';
+import { Song } from '../app/shared/song-list/song';
 
 export const SONGS: Song[] = [{
   "id":12552,
