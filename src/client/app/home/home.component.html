@@ -2,8 +2,9 @@
   Hier is een lijst met liedjes met voornamen erin!
 </p>
 
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Song With Firstname">
+<form (submit)="addSong()">
+  <input [(ngModel)]="artist" name="newArtist" placeholder="Enter artist">
+  <input [(ngModel)]="title" name="newTitle" placeholder="Enter songtitle">
   <button type="submit">Add</button>
 </form>
 

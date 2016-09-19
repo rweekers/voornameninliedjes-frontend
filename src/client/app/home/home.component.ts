@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SongListService, NameListService, Song } from '../shared/index';
+import { SongListService, Song } from '../shared/index';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -13,9 +13,10 @@ import { SongListService, NameListService, Song } from '../shared/index';
 
 export class HomeComponent implements OnInit {
 
-  newName: string = '';
+  newSong: Song;
+  artist: string;
+  title: string;
   errorMessage: string;
-  names: any[] = [];
   songs: Song[] = [];
 
   /**
@@ -27,23 +28,11 @@ export class HomeComponent implements OnInit {
   constructor(public songListService: SongListService) {}
 
   /**
-   * Get the names OnInit
+   * Get the songs OnInit
    */
   ngOnInit() {
-    // this.getNames();
     this.getSongs();
   }
-
-  /**
-   * Handle the nameListService observable
-   */
-  // getNames() {
-  //   this.nameListService.get()
-	// 	     .subscribe(
-	// 	       names => this.names = names,
-	// 	       error =>  this.errorMessage = <any>error
-	// 	       );
-  // }
 
   /**
    * Handle the songListService observable
@@ -57,13 +46,17 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * Pushes a new name onto the names array
+   * Pushes a new song onto the names array
    * @return {boolean} false to prevent default form submit behavior to refresh the page.
    */
-  addName(): boolean {
-    // TODO: implement nameListService.post
-    this.names.push(this.newName);
-    this.newName = '';
+  addSong(): boolean {
+    // TODO: implement songListService.post
+    this.newSong = new Song();
+    this.newSong.artist = this.artist;
+    this.newSong.title = this.title;
+    this.songs.push(this.newSong);
+    this.artist = '';
+    this.title = '';
     return false;
   }
 
