@@ -9,5 +9,6 @@
 </form>
 
 <ul>
-  <li *ngFor="let song of songs">{{song.artist}} - {{song.title}}</li>
+  <li *ngFor="let song of songs | paginate: { itemsPerPage: 5, currentPage: p }">{{song.artist}} - {{song.title}}</li>
 </ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
