@@ -4,4 +4,5 @@ export class Song {
   title: string;
   background: string;
   youtube: string;
+  split: number;
 }

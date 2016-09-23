@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Song } from './song';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mergeMap';
 
 /**
  * This class provides the SongList service with methods to read names and add names.
@@ -24,7 +26,11 @@ export class SongListService {
    */
   get(): Observable<Song[]> {
     return this.http.get('/assets/songs.json')
-                    .map((res: Response) => res.json())
+                    .mergeMap((res: Response) => res.json())
+                    .filter(function(d: Song) {
+                        console.log(d.artist + " " + d.split);
+                        return true;
+                    })
                     .catch(this.handleError);
   }
 
