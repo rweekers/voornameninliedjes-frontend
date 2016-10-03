@@ -26,11 +26,11 @@ export class SongListService {
    */
   get(): Observable<Song[]> {
     return this.http.get('/assets/songs.json')
-                    .mergeMap((res: Response) => res.json())
-                    .filter(function(d: Song) {
-                        console.log(d.artist + " " + d.split);
-                        return true;
-                    })
+                    .map((res: Response) => res.json())
+                    // .filter(function(d: Song) {
+                    //     console.log(d.artist + " " + d.split);
+                    //     return d.split > 7;
+                    // })
                     .catch(this.handleError);
   }
 

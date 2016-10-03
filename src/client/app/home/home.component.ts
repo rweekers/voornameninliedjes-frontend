@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SongListService, Song } from '../shared/index';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -38,12 +39,17 @@ export class HomeComponent implements OnInit {
    * Handle the songListService observable
    */
   getSongs() {
-    this.songListService.get()
-        .subscribe(
-          songs => this.songs = songs,
-          error => this.errorMessage = <any>error
-        );
-  }
+    // this.songListService.get()
+    //     .subscribe(
+    //       songs => this.songs = songs,
+    //       error => this.errorMessage = <any>error
+    //     );
+      this.songListService.get()
+          .subscribe(
+            songs => this.songs = songs,
+            error => this.errorMessage = <any>error
+          );
+        }
 
   /**
    * Pushes a new song onto the names array
@@ -54,7 +60,7 @@ export class HomeComponent implements OnInit {
     this.newSong = new Song();
     this.newSong.artist = this.artist;
     this.newSong.title = this.title;
-    this.songs.push(this.newSong);
+    // this.songs.push(this.newSong);
     this.artist = '';
     this.title = '';
     return false;
