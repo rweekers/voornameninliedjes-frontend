@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
   artist: string;
   title: string;
   errorMessage: string;
-  songs: Song[] = [];
+  songs: Song[];
+  p : number = 1;
+  total: number;
+  loading: boolean;
+  mode: 'Observable';
 
   /**
    * Creates an instance of the HomeComponent with the injected
@@ -32,23 +36,22 @@ export class HomeComponent implements OnInit {
    * Get the songs OnInit
    */
   ngOnInit() {
-    this.getSongs();
+    this.getSongs(1);
+    this.total = 10;
   }
 
   /**
    * Handle the songListService observable
    */
-  getSongs() {
-    // this.songListService.get()
-    //     .subscribe(
-    //       songs => this.songs = songs,
-    //       error => this.errorMessage = <any>error
-    //     );
-      this.songListService.get()
+  getSongs(page: number) {
+      this.loading = true;
+      this.songListService.get(page)
           .subscribe(
             songs => this.songs = songs,
             error => this.errorMessage = <any>error
           );
+          this.p = page;
+          this.loading = false;
         }
 
   /**

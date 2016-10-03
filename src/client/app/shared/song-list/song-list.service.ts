@@ -13,6 +13,12 @@ import 'rxjs/add/operator/mergeMap';
 @Injectable()
 export class SongListService {
 
+  private songsUrl = '/assets/songs.json'; // URL to JSON file
+
+  /*
+  private songsUrl = '...'; // URL to web api
+  */
+
   /**
    * Creates a new SongListService with the injected Http.
    * @param {Http} http - The injected Http.
@@ -24,14 +30,19 @@ export class SongListService {
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {string[]} The Observable for the HTTP request.
    */
-  get(): Observable<Song[]> {
-    return this.http.get('/assets/songs.json')
-                    .map((res: Response) => res.json())
-                    // .filter(function(d: Song) {
-                    //     console.log(d.artist + " " + d.split);
-                    //     return d.split > 7;
-                    // })
+  get(page: number): Observable<Song[]> {
+    const perPage = 3;
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+
+    return this.http.get(this.songsUrl)
+                    .map(res => this.extractData(res, start, end))
                     .catch(this.handleError);
+  }
+
+  private extractData(res: Response, start: number, end: number) {
+    let body = res.json();
+    return body.data.slice(start, end) || { };
   }
 
   /**
