@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
+import {Config} from '../config/env.config';
 
 /**
  * This class provides the SongList service with methods to read names and add names.
@@ -13,11 +14,7 @@ import 'rxjs/add/operator/mergeMap';
 @Injectable()
 export class SongListService {
 
-  private songsUrl = '/assets/songs.json'; // URL to JSON file
-
-  /*
-  private songsUrl = '...'; // URL to web api
-  */
+  private songsUrl = Config.API;
 
   /**
    * Creates a new SongListService with the injected Http.
