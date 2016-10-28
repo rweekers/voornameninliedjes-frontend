@@ -53,20 +53,4 @@ export class HomeComponent implements OnInit {
           this.p = page;
           this.loading = false;
         }
-
-  /**
-   * Pushes a new song onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
-   */
-  addSong(): boolean {
-    // TODO: implement songListService.post
-    this.newSong = new Song();
-    this.newSong.artist = this.artist;
-    this.newSong.title = this.title;
-    // this.songs.push(this.newSong);
-    this.artist = '';
-    this.title = '';
-    return false;
-  }
-
 }

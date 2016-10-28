@@ -2,12 +2,6 @@
   Hier is een lijst met liedjes met voornamen erin!
 </p>
 
-<form (submit)="addSong()">
-  <input [(ngModel)]="artist" name="newArtist" placeholder="Enter artist">
-  <input [(ngModel)]="title" name="newTitle" placeholder="Enter songtitle">
-  <button type="submit">Add</button>
-</form>
-
 <ul class="song-list">
     <li *ngFor="let song of songs | paginate: { id: 'server', itemsPerPage: 3, currentPage: p, totalItems: total }">
         {{ song.artist }} - {{ song.title }}

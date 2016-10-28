@@ -31,6 +31,7 @@ export class SongListService {
     const perPage = 3;
     const start = (page - 1) * perPage;
     const end = start + perPage;
+    console.log('Environment ' + Config.ENV);
 
     return this.http.get(this.songsUrl)
                     .map(res => this.extractData(res, start, end))
