@@ -33,9 +33,16 @@ export class SongListService {
     const end = start + perPage;
     console.log('Environment ' + Config.ENV);
 
-    return this.http.get(this.songsUrl)
+    if (Config.ENV === 'TEST') {
+          return this.http
+                    .get(this.songsUrl)
+                    .map(res => res.json())
+                    .catch(this.handleError);
+    } else {
+          return this.http.get(this.songsUrl)
                     .map(res => this.extractData(res, start, end))
                     .catch(this.handleError);
+    }
   }
 
   private extractData(res: Response, start: number, end: number) {
