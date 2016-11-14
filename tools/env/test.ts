@@ -2,7 +2,7 @@ import {EnvConfig} from './env-config.interface';
 
 const TestConfig: EnvConfig = {
   ENV: 'TEST',
-  API: 'https://voornameninliedjes.nl/namesandsongs/api/song'
+  API: 'http://localhost:3000/api/n/songs'
 };
 
 export = TestConfig;

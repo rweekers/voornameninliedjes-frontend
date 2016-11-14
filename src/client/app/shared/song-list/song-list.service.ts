@@ -36,7 +36,7 @@ export class SongListService {
     if (Config.ENV === 'TEST') {
           return this.http
                     .get(this.songsUrl)
-                    .map(res => res.json())
+                    .map(res => res.json().data)
                     .catch(this.handleError);
     } else {
           return this.http.get(this.songsUrl)
