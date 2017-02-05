@@ -38,6 +38,7 @@ voornameninliedjes-frontend.sublime-project
 voornameninliedjes-frontend.sublime-workspace
 
 /tools/**/*.js
+coverage_js/
 dist
 dev
 docs
