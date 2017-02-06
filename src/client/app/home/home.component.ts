@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SongListService, Song } from '../shared/index';
-import { Observable } from 'rxjs/Observable';
 
 /**
  * This class represents the lazy loaded HomeComponent.
