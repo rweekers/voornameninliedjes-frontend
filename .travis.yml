@@ -11,9 +11,6 @@ sudo: false
 os:
   - linux
 
-script:
-  - ng build --prod
-
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CHROME_BIN=chromium-browser; fi  # Karma CI
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
