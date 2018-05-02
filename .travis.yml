@@ -41,13 +41,13 @@ env:
 cache:
   directories: node_modules
 
-script:
-  - npm run tests.all
+# script:
+#   - npm run tests.all
 
-addons:
-  sonarcloud:
-    token:
-      secure: 266c9441629d0b29a2af8e8d9d9a2ed4833c0707
-script:
+# addons:
+#   sonarcloud:
+#     token:
+#       secure: 266c9441629d0b29a2af8e8d9d9a2ed4833c0707
+# script:
   # other script steps might be done before running the actual SonarQube analysis
-  - sonar-scanner
+  # - sonar-scanner
