@@ -4,26 +4,27 @@ language: node_js
 dist: trusty
 
 node_js:
-  - stable
+  - "6.9"
 
 sudo: false
 
 os:
   - linux
 
+script:
+  - ng build --prod
+
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CHROME_BIN=chromium-browser; fi  # Karma CI
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
 
 before_script:
+  - ng build --prod
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then nohup bash -c "webdriver-manager start 2>&1 &"; fi  # Protractor CI
 
 after_failure:
   - cat /home/travis/build/mgechev/angular2-seed/npm-debug.log
-
-branches:
-  only: master
 
 notifications:
   email: true
