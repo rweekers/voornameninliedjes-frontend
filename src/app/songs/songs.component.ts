@@ -14,15 +14,12 @@ export class SongsComponent implements OnInit {
   songs: Song[];
 
   ngOnInit() {
-    console.log('Calling ngOnInit...')
     this.getSongs();
   }
 
   getSongs(): void {
-    console.log('Getting songs.');
     this.songService.getSongs()
         .subscribe(songs => {
-          console.log('Gotten songs ' + songs);
           this.songs = songs;
         });
   }
