@@ -8,7 +8,8 @@ import { Observable, of } from 'rxjs';
 })
 export class SongService {
 
-  private songsUrl = 'api/songs';
+  // private songsUrl = 'api/songs';
+  private songsUrl = 'https://api.voornameninliedjes.nl/song';
 
   constructor(
     private http: HttpClient
