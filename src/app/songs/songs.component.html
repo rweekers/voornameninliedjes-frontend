@@ -1,5 +1,12 @@
-<ul>
-  <li *ngFor="let song of songs">
-    <p class="song">{{song.artist}} - {{song.title}}</p>
-  </li>
-</ul>
+<div class="grid-list">
+  <mat-card>
+    <mat-card-title>Lijst</mat-card-title>
+    <mat-card-content class="basic-list">
+      <mat-grid-list cols="4" rowHeight="100px">
+        <div *ngFor="let song of songs">
+          <mat-grid-tile> {{song.artist}} - {{song.title}} </mat-grid-tile>
+        </div>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</div>
