@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Song } from './song';
-import { SONGS } from './mock-songs';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,9 +8,13 @@ import { Observable, of } from 'rxjs';
 })
 export class SongService {
 
-  constructor() { }
+  private songsUrl = 'api/songs';
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getSongs(): Observable<Song[]> {
-    return of(SONGS);
+    return this.http.get<Song[]>(this.songsUrl);
   }
 }
