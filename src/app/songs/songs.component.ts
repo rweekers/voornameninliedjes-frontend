@@ -12,14 +12,15 @@ export class SongsComponent implements OnInit {
   constructor(private songService: SongService) { }
 
   songs: Song[];
+  breakpoint: number;
 
   ngOnInit() {
     this.getSongs();
-    this.breakpoint = (window.innerWidth <= 400) ? 1 : 2;
+    this.breakpoint = (window.innerWidth <= 480) ? 1 : 2;
   }
   
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 2;
+    this.breakpoint = (event.target.innerWidth <= 480) ? 1 : 2;
   }
 
   getSongs(): void {
