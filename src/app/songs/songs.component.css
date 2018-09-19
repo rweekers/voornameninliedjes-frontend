@@ -5,17 +5,17 @@
 .song h1 {
     color: rgb(32, 20, 194);
     font-weight: 300;
-    font-size: 100%;
+    font-size: 70%;
 }
 
 .song h2 {
     color: rgb(194, 124, 20);
     font-weight: 600;
-    font-size: 150%; 
+    font-size: 90%; 
 }
 
 mat-grid-list {
-    width: 640px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
