@@ -2,16 +2,36 @@
     font-family: 'Helvetica Neue', sans-serif;
 }
 
-.song h1 {
-    color: rgb(32, 20, 194);
-    font-weight: 300;
-    font-size: 70%;
+@media only screen and (max-width: 900px) {
+    .song .artist {
+        font-size: 0.85em;
+        font-weight: 300;
+    }
+    .song .title {
+        font-size: 1em;
+        font-weight: 500;
+    }
 }
 
-.song h2 {
-    color: rgb(194, 124, 20);
-    font-weight: 600;
-    font-size: 90%; 
+@media only screen and (min-width: 900px) {
+    .song .artist {
+        font-size: 1em;
+        font-weight: 400;
+    }
+    .song .title {
+        font-size: 1.25em;
+        font-weight: 600;
+    }
+}
+
+.song .artist {
+    margin-top: 0.25em;
+    color: darkgray;
+}
+
+.song .title {
+    margin-top: 0.75em;
+    color: lightgray;
 }
 
 mat-grid-list {

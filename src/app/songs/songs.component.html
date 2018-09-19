@@ -1,7 +1,7 @@
 <div class="grid-list">
-      <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)" gutterSize="1em">
+      <mat-grid-list [cols]="breakpoint" rowHeight="2:0.75" (window:resize)="onResize($event)" gutterSize="0.75em">
         <div *ngFor="let song of songs">
-          <mat-grid-tile class="song"><div><h1>{{song.title}}</h1></div> <br /> <div><h2>{{song.artist}}</h2></div> </mat-grid-tile>
+          <mat-grid-tile class="song"><div><div class="artist">{{song.artist}}</div> <div class="title">{{song.title}}</div></div> </mat-grid-tile>
         </div>
       </mat-grid-list>
 </div>
