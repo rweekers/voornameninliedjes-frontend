@@ -45,7 +45,7 @@ p {
 }
   
 mat-grid-tile {
-    background: rgba(0, 0, 0, 0.32);
+    background: rgba(0, 0, 0, 0.5);
     margin: 16px 0;
 }
   
