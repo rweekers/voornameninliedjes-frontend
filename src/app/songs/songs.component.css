@@ -8,8 +8,8 @@
         font-weight: 300;
     }
     .song .title {
-        font-size: 1em;
-        font-weight: 500;
+        font-size: 1.25em;
+        font-weight: 600;
     }
 }
 
@@ -19,19 +19,19 @@
         font-weight: 400;
     }
     .song .title {
-        font-size: 1.25em;
-        font-weight: 600;
+        font-size: 1.50em;
+        font-weight: 800;
     }
 }
 
 .song .artist {
     margin-top: 0.25em;
-    color: darkgray;
+    color: white;
 }
 
 .song .title {
     margin-top: 0.75em;
-    color: lightgray;
+    color: white;
 }
 
 mat-grid-list {
@@ -45,7 +45,7 @@ p {
 }
   
 mat-grid-tile {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 165, 0, 0.85);
     margin: 16px 0;
 }
   

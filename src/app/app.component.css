@@ -1,13 +1,13 @@
 .root {
-  background-image: url(assets/img/background.jpeg);
+  background-image: url(assets/img/background4.jpeg);
   background-attachment: fixed;
 }
 
 h1 {
-  color: white;
+  color: gold;
   font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 200;
-  font-size: 300%;
+  font-weight: 150;
+  font-size: 350%;
 }
 
 h2 {
@@ -20,7 +20,7 @@ h2 {
 .header {
   padding: 2.5em;
   overflow: auto;
-  width: 100%;
+  width: 95%;
   height: 10%;
 }
 
