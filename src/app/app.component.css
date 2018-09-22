@@ -1,6 +1,7 @@
 .root {
   background-image: url(assets/img/background4.jpeg);
   background-attachment: fixed;
+  background-size: cover;
 }
 
 h1 {
@@ -30,4 +31,16 @@ h2 {
 
 .header h1 {
   display: inline;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 99%;
+  height: 3em;
+  background-color: rgb(19, 18, 15, 0.5);
+  color: white;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 1em;
+  text-align: center;
 }
