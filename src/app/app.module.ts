@@ -8,6 +8,8 @@ import {MatButtonModule, MatCheckboxModule, MatGridListModule, MatCardModule } f
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 import { AppComponent } from './app.component';
 import { SongsComponent } from './songs/songs.component';
 
@@ -23,7 +25,8 @@ import { SongsComponent } from './songs/songs.component';
     MatButtonModule, 
     MatCheckboxModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    InfiniteScrollModule
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

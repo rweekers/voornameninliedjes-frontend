@@ -1,5 +1,5 @@
 export class Song {
-    id: number;
-    artist: string;
-    title: string;
-  }
+  id: number;
+  artist: string;
+  title: string;
+}
