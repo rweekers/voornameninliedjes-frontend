@@ -1,15 +1,13 @@
 <div class="grid-list">
-  <mat-grid-list [cols]="breakpoint" rowHeight="2:0.75" (window:resize)="onResize($event)" gutterSize="0.75em">
-    <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
-      [scrollWindow]="false" style="height: 400px; overflow-y: scroll;">
-      <div *ngFor="let song of myPhotosList">
-        <mat-grid-tile class="song">
-          <div>
-            <div class="artist">{{song.artist}}</div>
-            <div class="title">{{song.title}}</div>
-          </div>
-        </mat-grid-tile>
-      </div>
+  <mat-grid-list [cols]="breakpoint" rowHeight="2:0.75" (window:resize)="onResize($event)" gutterSize="0.75em" 
+  infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <div *ngFor="let song of songsPaginated">
+      <mat-grid-tile class="song">
+        <div>
+          <div class="artist">{{song.artist}}</div>
+          <div class="title">{{song.title}}</div>
+        </div>
+      </mat-grid-tile>
     </div>
   </mat-grid-list>
 </div>

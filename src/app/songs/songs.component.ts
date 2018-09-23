@@ -14,7 +14,7 @@ export class SongsComponent implements OnInit {
   songs: Song[];
   breakpoint: number;
   songsPaginated: Song[] = [];
-  page: number = 1;
+  page: number = 0;
 
   ngOnInit() {
     this.getSongs();
@@ -43,7 +43,7 @@ export class SongsComponent implements OnInit {
   onSuccess(res) {
     console.log(res);
     if (res != undefined) {
-      res.forEach(item => {
+      res.content.forEach(item => {
         this.songsPaginated.push(item);
       });
     }
