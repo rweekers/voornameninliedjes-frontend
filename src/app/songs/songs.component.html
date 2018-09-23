@@ -1,6 +1,9 @@
+<div class="filter-container">
+  <input (keyup)="onKey($event)" placeholder="Search an artist">
+</div>
 <div class="grid-list">
-  <mat-grid-list [cols]="breakpoint" rowHeight="2:0.75" (window:resize)="onResize($event)" gutterSize="0.75em" 
-  infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+  <mat-grid-list [cols]="breakpoint" rowHeight="2:0.75" (window:resize)="onResize($event)" gutterSize="0.75em"
+    infiniteScroll [infiniteScrollDistance]="1.5" [infiniteScrollThrottle]="200" (scrolled)="onScroll()">
     <div *ngFor="let song of songsPaginated">
       <mat-grid-tile class="song">
         <div>

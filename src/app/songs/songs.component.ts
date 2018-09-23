@@ -15,10 +15,11 @@ export class SongsComponent implements OnInit {
   breakpoint: number;
   songsPaginated: Song[] = [];
   page: number = 0;
+  filter: string = '';
 
   ngOnInit() {
     this.getSongs();
-    this.getSongsPaginated();
+    this.getSongsPaginated(this.filter);
     this.breakpoint = (window.innerWidth <= 480) ? 1 : 2;
   }
 
@@ -34,9 +35,9 @@ export class SongsComponent implements OnInit {
   }
 
   // To get song data from api  
-  getSongsPaginated() {
+  getSongsPaginated(filter: string) {
     console.log(this.page);
-    this.songService.getSongsPaginated(this.page).subscribe((res) => this.onSuccess(res));
+    this.songService.getSongsPaginated(this.filter, this.page).subscribe((res) => this.onSuccess(res));
   }
 
   // When we got data on a success  
@@ -53,7 +54,13 @@ export class SongsComponent implements OnInit {
   onScroll() {
     console.log("Scrolled");
     this.page = this.page + 1;
-    this.getSongsPaginated();
+    this.getSongsPaginated(this.filter);
   }
 
+  onKey(event: any) { // without type info
+    console.log('Event is ' + event.target.value);
+    this.songsPaginated = [];
+    this.filter = event.target.value;
+    this.getSongsPaginated(this.filter);
+  }
 }

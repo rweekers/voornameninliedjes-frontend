@@ -2,6 +2,5 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 app-root {
-    display: block;
     width: 100%;
 }

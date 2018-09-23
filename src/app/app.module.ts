@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatGridListModule, MatCardModule } from '@angular/material';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -21,7 +21,7 @@ import { SongsComponent } from './songs/songs.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     MatButtonModule, 
     MatCheckboxModule,
     MatGridListModule,
