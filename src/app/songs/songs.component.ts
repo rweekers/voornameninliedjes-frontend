@@ -20,11 +20,11 @@ export class SongsComponent implements OnInit {
   ngOnInit() {
     this.getSongs();
     this.getSongsPaginated(this.filter);
-    this.breakpoint = (window.innerWidth <= 480) ? 1 : 2;
+    this.breakpoint = (window.innerWidth <= 600) ? 1 : 2;
   }
 
   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 480) ? 1 : 2;
+    this.breakpoint = (event.target.innerWidth <= 600) ? 1 : 2;
   }
 
   getSongs(): void {

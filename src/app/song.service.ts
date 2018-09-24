@@ -10,7 +10,7 @@ export class SongService {
 
   // private songsUrl = 'api/songs';
   private songsUrl = 'https://api.voornameninliedjes.nl/song';
-  private size = 6;
+  private size = 10;
 
   constructor(
     private http: HttpClient

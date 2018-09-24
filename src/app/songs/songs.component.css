@@ -2,36 +2,62 @@
     font-family: 'Helvetica Neue', sans-serif;
 }
 
-@media only screen and (max-width: 900px) {
-    .song .artist {
-        font-size: 0.85em;
-        font-weight: 300;
-    }
-    .song .title {
-        font-size: 1.25em;
-        font-weight: 600;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    .song .artist {
-        font-size: 1em;
-        font-weight: 400;
-    }
-    .song .title {
-        font-size: 1.50em;
-        font-weight: 800;
-    }
-}
-
 .song .artist {
     margin-top: 0.25em;
     color: white;
+    font-size: 0.85em;
+    font-weight: 300;
 }
 
 .song .title {
     margin-top: 0.75em;
     color: white;
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.filter-container {
+    padding: 1em;
+}
+
+input{
+    border-radius:10px;
+    text-align: center;
+    border-style: none;
+    width: 40%;
+}
+
+@media only screen and (max-width: 900px) {
+    .song .artist {
+        font-size: 0.75em;
+        font-weight: 400;
+    }
+    .song .title {
+        font-size: 1.25em;
+        font-weight: 800;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .song .artist {
+        font-size: 0.6em;
+        font-weight: 300;
+    }
+    .song .title {
+        font-size: 1.10em;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .song .artist {
+        font-size: 0.5em;
+        font-weight: 300;
+    }
+    .song .title {
+        font-size: 1em;
+        font-weight: 600;
+    }
 }
 
 mat-grid-list {
