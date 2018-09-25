@@ -1,5 +1,5 @@
 import { SongService } from './../song.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Song } from '../song';
 
 @Component({
@@ -16,6 +16,7 @@ export class SongsComponent implements OnInit {
   songsPaginated: Song[] = [];
   page: number = 0;
   filter: string = '';
+  @ViewChild('myHeader') header: HTMLElement;
 
   ngOnInit() {
     this.getSongs();
@@ -62,5 +63,22 @@ export class SongsComponent implements OnInit {
     this.songsPaginated = [];
     this.filter = event.target.value;
     this.getSongsPaginated(this.filter);
+  }
+
+  // When the user scrolls the page, execute myFunction
+  onscroll(event: any) {
+    this.myFunction()
+  };
+
+  // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  myFunction() {
+      // Get the offset position of the navbar
+      var sticky = this.header.offsetTop;
+
+    if (window.pageYOffset > sticky) {
+      this.header.classList.add("sticky");
+    } else {
+      this.header.classList.remove("sticky");
+    }
   }
 }
