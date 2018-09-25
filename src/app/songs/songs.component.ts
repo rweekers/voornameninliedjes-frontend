@@ -16,7 +16,8 @@ export class SongsComponent implements OnInit {
   songsPaginated: Song[] = [];
   page: number = 0;
   filter: string = '';
-  @ViewChild('myHeader') header: HTMLElement;
+  isSticky: boolean = false;
+  @ViewChild('myHeader') header: ElementRef;
 
   ngOnInit() {
     this.getSongs();
@@ -52,10 +53,16 @@ export class SongsComponent implements OnInit {
   }
 
   // When scroll down the screen  
-  onScroll() {
+  onScrollDown() {
     console.log("Scrolled");
     this.page = this.page + 1;
     this.getSongsPaginated(this.filter);
+
+    this.determineStickySearchField();
+  }
+
+  onScrollUp() {
+    this.determineStickySearchField();
   }
 
   onKey(event: any) { // without type info
@@ -65,20 +72,14 @@ export class SongsComponent implements OnInit {
     this.getSongsPaginated(this.filter);
   }
 
-  // When the user scrolls the page, execute myFunction
-  onscroll(event: any) {
-    this.myFunction()
-  };
-
   // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-  myFunction() {
-      // Get the offset position of the navbar
-      var sticky = this.header.offsetTop;
-
-    if (window.pageYOffset > sticky) {
-      this.header.classList.add("sticky");
+  determineStickySearchField() {
+    // Get the offset position of the navbar
+    console.log('window page y offset ' + window.pageYOffset + ' and offsettop ' + this.header.nativeElement.offsetTop);
+    if (window.pageYOffset > this.header.nativeElement.offsetTop) {
+      this.isSticky = true;
     } else {
-      this.header.classList.remove("sticky");
+      this.isSticky = false;
     }
   }
 }

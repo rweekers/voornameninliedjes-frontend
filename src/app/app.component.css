@@ -61,10 +61,17 @@ h2 {
 .footer {
   position: fixed;
   bottom: 0;
-  height: 3em;
+  height: 2em;
+  width: 100%;
   background-color: rgb(19, 18, 15, 0.5);
   color: white;
   font-family: 'Helvetica Neue', sans-serif;
   font-size: 1em;
   text-align: center;
+}
+
+.footer p {
+    height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
 }

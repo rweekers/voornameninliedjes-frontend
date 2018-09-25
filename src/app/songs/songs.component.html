@@ -1,9 +1,9 @@
-<div class="filter-container" #myHeader>
-  <input (keyup)="onKey($event)" placeholder="Search an artist">
+<div class="filter-container" [ngClass]="{'sticky': isSticky}" #myHeader>
+  <input (keyup)="onKey($event)" placeholder="Zoek op artiest of titel">
 </div>
 <div class="grid-list">
   <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)" gutterSize="0.75em"
-    infiniteScroll [infiniteScrollDistance]="1.5" [infiniteScrollThrottle]="200" (scrolled)="onScroll()">
+    infiniteScroll [infiniteScrollDistance]="1.5" [infiniteScrollThrottle]="200" (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
     <div *ngFor="let song of songsPaginated">
       <mat-grid-tile class="song">
         <div>
