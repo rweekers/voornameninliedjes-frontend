@@ -22,9 +22,12 @@
 
 .sticky {
     position: fixed;
-    display: block;
-    top: 5%;
-    width: 100%
+    z-index: 2;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
@@ -72,6 +75,11 @@ input{
     }
 }
 
+.grid-list {
+    z-index: 1;
+    position: relative;
+}
+
 mat-grid-list {
     width: 80%;
     min-height: 100vh;
@@ -94,3 +102,12 @@ mat-grid-tile {
 img {
     width: 350px;
 } 
+
+.navbar {
+    z-index: 10;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}

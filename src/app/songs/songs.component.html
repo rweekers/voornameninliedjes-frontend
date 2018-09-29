@@ -1,3 +1,6 @@
+<div class="navbar" *ngIf="isSticky">
+</div>
+
 <div class="filter-container" [ngClass]="{'sticky': isSticky}" #myHeader>
   <input (keyup)="onKey($event)" placeholder="Zoek op artiest of titel">
 </div>
