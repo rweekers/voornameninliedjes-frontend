@@ -1,5 +1,5 @@
 import { SongService } from './../song.service';
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { Song } from '../song';
 
 @Component({
@@ -58,26 +58,23 @@ export class SongsComponent implements OnInit {
   onScrollDown() {
     this.page = this.page + 1;
     this.getSongsPaginated(this.filter);
-
-    this.determineStickySearchField();
   }
 
-  onScrollUp() {
-    console.log('Scrolled up!');
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
     this.determineStickySearchField();
   }
 
   onKey(event: any) { // without type info
-    console.log('Event is ' + event.target.value);
     this.songsPaginated = new Set();
     this.filter = event.target.value;
+    if (this.filter === "") this.page = 0;
     this.getSongsPaginated(this.filter);
   }
 
   // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
   determineStickySearchField() {
-    // Get the offset position of the navbar
-    console.log('window page y offset ' + window.pageYOffset + ' and offsettop ' + this.offsetY);
+    // Get the offset position of the screen and compare with searchbar
     if (window.pageYOffset > this.offsetY) {
       this.isSticky = true;
     } else {
