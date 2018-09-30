@@ -13,16 +13,18 @@ export class SongsComponent implements OnInit {
 
   songs: Song[];
   breakpoint: number;
-  songsPaginated: Song[] = [];
+  songsPaginated: Set<Song> = new Set();
   page: number = 0;
   filter: string = '';
   isSticky: boolean = false;
   @ViewChild('myHeader') header: ElementRef;
+  offsetY: number;
 
   ngOnInit() {
-    this.getSongs();
+    // this.getSongs();
     this.getSongsPaginated(this.filter);
     this.breakpoint = (window.innerWidth <= 600) ? 1 : 2;
+    this.offsetY = this.header.nativeElement.offsetTop;
   }
 
   onResize(event) {
@@ -47,14 +49,13 @@ export class SongsComponent implements OnInit {
     console.log(res);
     if (res != undefined) {
       res.content.forEach(item => {
-        this.songsPaginated.push(item);
+        this.songsPaginated.add(item);
       });
     }
   }
 
   // When scroll down the screen  
   onScrollDown() {
-    console.log("Scrolled");
     this.page = this.page + 1;
     this.getSongsPaginated(this.filter);
 
@@ -62,12 +63,13 @@ export class SongsComponent implements OnInit {
   }
 
   onScrollUp() {
+    console.log('Scrolled up!');
     this.determineStickySearchField();
   }
 
   onKey(event: any) { // without type info
     console.log('Event is ' + event.target.value);
-    this.songsPaginated = [];
+    this.songsPaginated = new Set();
     this.filter = event.target.value;
     this.getSongsPaginated(this.filter);
   }
@@ -75,8 +77,8 @@ export class SongsComponent implements OnInit {
   // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
   determineStickySearchField() {
     // Get the offset position of the navbar
-    console.log('window page y offset ' + window.pageYOffset + ' and offsettop ' + this.header.nativeElement.offsetTop);
-    if (window.pageYOffset > this.header.nativeElement.offsetTop) {
+    console.log('window page y offset ' + window.pageYOffset + ' and offsettop ' + this.offsetY);
+    if (window.pageYOffset > this.offsetY) {
       this.isSticky = true;
     } else {
       this.isSticky = false;
