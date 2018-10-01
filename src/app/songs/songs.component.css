@@ -3,7 +3,7 @@
 }
 
 .song .artist {
-    margin-top: 0.25em;
+    margin-top: 5%;
     color: white;
     font-size: 0.85em;
     font-weight: 300;
@@ -17,7 +17,7 @@
 }
 
 .filter-container {
-    padding: 1em;
+    padding: 0.25em;
 }
 
 .sticky {
@@ -35,7 +35,7 @@
     padding-top: 102px;
   } */
 
-input{
+input {
     border-radius:10px;
     text-align: center;
     border-style: none;
@@ -87,7 +87,7 @@ mat-grid-list {
     margin-right: auto;
     overflow: auto;
     scroll-behavior: smooth;
-    margin-top: 5%;
+    margin-top: 3%;
 }
   
 p {
@@ -95,7 +95,7 @@ p {
 }
   
 mat-grid-tile {
-    background: rgba(255, 165, 0, 0.85);
+    background: rgba(255, 165, 0, 0.9);
     margin: 16px 0;
 }
   

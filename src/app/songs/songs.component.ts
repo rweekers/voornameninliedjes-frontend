@@ -68,8 +68,22 @@ export class SongsComponent implements OnInit {
   onKey(event: any) { // without type info
     this.songsPaginated = new Set();
     this.filter = event.target.value;
-    if (this.filter === "") this.page = 0;
+    this.scrollToTop();
+    if (this.filter === "") {
+      this.page = 0;
+    }
     this.getSongsPaginated(this.filter);
+  }
+
+  scrollToTop() {
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 
   // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position

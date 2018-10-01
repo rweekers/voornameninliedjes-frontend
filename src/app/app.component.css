@@ -10,6 +10,9 @@ h1 {
   font-weight: 150;
   font-size: 350%;
   text-align: center;
+  padding: 2%;
+  border: 2%;
+  margin: 1%;
 }
 
 h2 {
@@ -55,7 +58,7 @@ h2 {
 
 .header {
   overflow: auto;
-  height: 10%;
+  height: 5%;
 }
 
 .footer {
