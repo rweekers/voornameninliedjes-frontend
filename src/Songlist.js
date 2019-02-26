@@ -15,8 +15,8 @@ class Songlist extends Component {
   }
 
   componentDidMount() {
-    fetch(API, {mode: "no-cors"})
-      // .then(response => response.json())
+    fetch(API)
+      .then(response => response.json())
       .then(data => {
         console.log('data ' + data);
         this.setState({ songs: data });
@@ -27,9 +27,10 @@ class Songlist extends Component {
     return (
       <div className="Songlist">
         <ul>
-          {this.songs.map(song =>
+          {this.state.songs.map(song =>
             <li key={song.id}>
-              <a href={song.artist}>{song.title}</a>
+              {/* <a href={song.artist}>{song.title}</a> */}
+              <Songdetail song={song} />
             </li>
           )}
         </ul>

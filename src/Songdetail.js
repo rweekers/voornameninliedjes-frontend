@@ -5,7 +5,7 @@ class Songdetail extends Component {
   render() {
     return (
       <div className="Songdetail">
-        <p>artist - title</p>
+        <p>{this.props.song}</p>
       </div>
     );
   }
