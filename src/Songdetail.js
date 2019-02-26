@@ -3,9 +3,11 @@ import './Songdetail.css';
 
 class Songdetail extends Component {
   render() {
+    const song = this.props;
+
     return (
       <div className="Songdetail">
-        <p>{this.props.song}</p>
+        <p>{song.artist} - {song.title}</p>
       </div>
     );
   }

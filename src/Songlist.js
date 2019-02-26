@@ -18,7 +18,6 @@ class Songlist extends Component {
     fetch(API)
       .then(response => response.json())
       .then(data => {
-        console.log('data ' + data);
         this.setState({ songs: data });
       });
   }
@@ -30,14 +29,9 @@ class Songlist extends Component {
           {this.state.songs.map(song =>
             <li key={song.id}>
               {/* <a href={song.artist}>{song.title}</a> */}
-              <Songdetail song={song} />
+              <Songdetail {...song} />
             </li>
           )}
-        </ul>
-        <ul>
-          <Songdetail/>
-          <Songdetail/>
-          <Songdetail/>
         </ul>
       </div>
     );
