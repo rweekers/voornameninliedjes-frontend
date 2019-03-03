@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Songlist.css';
-import Songdetail from './Songdetail';
+import Songrow from './Songrow';
 
 const API = 'https://api.voornameninliedjes.nl/songs';
 
@@ -29,7 +29,7 @@ class Songlist extends Component {
           {this.state.songs.map(song =>
             <li key={song.id}>
               {/* <a href={song.artist}>{song.title}</a> */}
-              <Songdetail {...song} />
+              <Songrow {...song} />
             </li>
           )}
         </ul>
