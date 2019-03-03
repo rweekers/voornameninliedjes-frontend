@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import './Songrow.css';
 
 class Songrow extends Component {
@@ -7,7 +8,7 @@ class Songrow extends Component {
 
     return (
       <div className="Songrow">
-        <p>{song.artist} - {song.title}</p>
+      <Link to={'/song/' + song.id}><p>{song.artist} - {song.title}</p></Link>{' '}
       </div>
     );
   }
