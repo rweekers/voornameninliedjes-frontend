@@ -3,5 +3,22 @@ ul {
 }
 
 .Songdetail {
-  font-size: 0.5em;
+  font-size: 1.0em;
+}
+
+.test {
+  display: flex;
+  margin: 0 0 0 30%;
+}
+
+.background {
+  font-size: 0.7em;
+  width: 20%;
+  margin: 5%;
+}
+
+.image {
+  width: 20%;
+  height: 20%;
+  margin: 8% 0 0 5%;
 }

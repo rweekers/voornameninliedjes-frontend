@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import logo from './record.svg';
 import './App.css';
 import Songlist from './Songlist';
 import Songdetail from './Songdetail';
@@ -29,10 +28,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hallo.
-          </p>
           <Router>
             <div>
               <Switch>

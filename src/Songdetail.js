@@ -30,7 +30,14 @@ class Songdetail extends Component {
     return (
       <div className="Songdetail">
         <p>{song.artist} - {song.title}</p>
-        <p>{song.background}</p>
+
+        <div class="test">       
+          <div className="background">
+            <p>{song.background}</p>
+          </div>
+
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Neil_Diamond_Aladdin_Theater_For_the_Performing_Arts_1976.jpg" className="image" />
+        </div>
 
         <YouTubeVideo yt={song.youtube} />
       </div>
