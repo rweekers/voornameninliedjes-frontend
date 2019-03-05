@@ -40,6 +40,8 @@ class Songdetail extends Component {
         </div>
 
         <YouTubeVideo yt={song.youtube} />
+        <br />
+        <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     );
   }
