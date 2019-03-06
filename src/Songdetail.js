@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import YouTube from 'react-youtube';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
@@ -57,6 +59,8 @@ class Songdetail extends Component {
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Neil_Diamond_Aladdin_Theater_For_the_Performing_Arts_1976.jpg" alt={song.artist} className="image" />
         </div>
 
+        <DemoCarousel />
+
         <YouTubeVideo yt={song.youtube} />
         <br />
         <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" width="300" height="380" title="test" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -72,6 +76,25 @@ function YouTubeVideo(props) {
   else { 
     return <p>No video found</p>; 
   }
+}
+
+function DemoCarousel() {
+  return (
+      <Carousel autoPlay="true">
+          <div>
+              <img alt="tree1" src="https://www.telegraph.co.uk/content/dam/news/2016/09/08/107667228_beech-tree-NEWS_trans_NvBQzQNjv4BqplGOf-dgG3z4gg9owgQTXEmhb5tXCQRHAvHRWfzHzHk.jpg" />
+              <p className="legend">Legend 1</p>
+          </div>
+          <div>
+              <img alt="tree1" src="https://www.telegraph.co.uk/content/dam/news/2016/09/08/107667228_beech-tree-NEWS_trans_NvBQzQNjv4BqplGOf-dgG3z4gg9owgQTXEmhb5tXCQRHAvHRWfzHzHk.jpg?imwidth=450" />
+              <p className="legend">Legend 2</p>
+          </div>
+          <div>
+              <img alt="tree1" src="https://www.telegraph.co.uk/content/dam/news/2016/09/08/107667228_beech-tree-NEWS_trans_NvBQzQNjv4BqplGOf-dgG3z4gg9owgQTXEmhb5tXCQRHAvHRWfzHzHk.jpg?imwidth=450" />
+              <p className="legend">Legend 3</p>
+          </div>
+      </Carousel>
+  );
 }
 
 export default Songdetail;
