@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import axios from "axios";
 import './App.css';
 import Songlist from './Songlist';
 import Songdetail from './Songdetail';
@@ -17,10 +18,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(API)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ songs: data });
+    axios.get(API)
+      .then(response => {
+        this.setState({ songs: response.data });
       });
   }
 

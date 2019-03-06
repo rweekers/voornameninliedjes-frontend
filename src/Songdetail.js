@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import YouTube from 'react-youtube';
 import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
+const FLICKR = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&text=\'Neil Diamond\'&per_page=5';
+// const FLICKR_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=47293484831;
+const FLICKR_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=47293484831';
 
 class Songdetail extends Component {
 
@@ -10,17 +14,31 @@ class Songdetail extends Component {
     super(props);
 
     this.state = {
-      song: ''
+      song: '',
+      photos: []
     };
   }
 
   componentDidMount() {
     this.id = this.props.match.params.id;
 
-    fetch(API + this.id)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ song: data });
+    axios.get(API + this.id)
+      .then(response => {
+        this.setState({ song: response.data });
+      });
+
+    axios.get(FLICKR)
+      .then(response => {
+        for (var i=0; i < response.data.photos.photo.length; i++){
+          var photo = response.data.photos.photo[i];
+          console.log(photo.id)
+        }
+        console.log(response.data);
+      });
+
+      axios.get(FLICKR_DETAIL)
+      .then(response => {
+        console.log(response.data);
       });
   }
 
@@ -31,17 +49,17 @@ class Songdetail extends Component {
       <div className="Songdetail">
         <p>{song.artist} - {song.title}</p>
 
-        <div class="test">       
+        <div className="test">       
           <div className="background">
             <p>{song.background}</p>
           </div>
 
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Neil_Diamond_Aladdin_Theater_For_the_Performing_Arts_1976.jpg" className="image" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Neil_Diamond_Aladdin_Theater_For_the_Performing_Arts_1976.jpg" alt={song.artist} className="image" />
         </div>
 
         <YouTubeVideo yt={song.youtube} />
         <br />
-        <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" width="300" height="380" title="test" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     );
   }
