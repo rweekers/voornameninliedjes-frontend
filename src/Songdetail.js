@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import update from 'immutability-helper';
 import axios from "axios";
 import YouTube from 'react-youtube';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -7,8 +8,7 @@ import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
 const FLICKR = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&text=\'Neil Diamond\'&per_page=5';
-// const FLICKR_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=47293484831;
-const FLICKR_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=47293484831';
+const FLICKR_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=';
 
 class Songdetail extends Component {
 
@@ -20,6 +20,15 @@ class Songdetail extends Component {
       photos: []
     };
   }
+
+findPhoto(photoId) {
+  axios.get(FLICKR_DETAIL + photoId)
+  .then(response => {
+    const photo = response.data.photo;
+    const newPhotos = update(this.state.photos, {$push: [photo]});
+    this.setState({ photos: newPhotos});
+  });
+}
 
   componentDidMount() {
     this.id = this.props.match.params.id;
@@ -33,19 +42,16 @@ class Songdetail extends Component {
       .then(response => {
         for (var i=0; i < response.data.photos.photo.length; i++){
           var photo = response.data.photos.photo[i];
-          console.log(photo.id)
+          console.log(photo.id);
+          this.findPhoto(photo.id)
         }
         console.log(response.data);
-      });
-
-      axios.get(FLICKR_DETAIL)
-      .then(response => {
-        console.log(response.data);
-      });
+      })
   }
 
   render() {
     const song = this.state.song;
+    const photos = this.state.photos;
 
     return (
       <div className="Songdetail">
@@ -59,7 +65,14 @@ class Songdetail extends Component {
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Neil_Diamond_Aladdin_Theater_For_the_Performing_Arts_1976.jpg" alt={song.artist} className="image" />
         </div>
 
-        <DemoCarousel />
+        <Carousel autoPlay="true" infiniteLoop="true" width="300px">
+            {photos.map(photo =>
+              <div>
+                <img alt={photo.title} src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`} />
+                <p className="legend">{song.artist}</p>
+              </div>
+            )}
+        </Carousel>
 
         <YouTubeVideo yt={song.youtube} />
         <br />
@@ -76,25 +89,6 @@ function YouTubeVideo(props) {
   else { 
     return <p>No video found</p>; 
   }
-}
-
-function DemoCarousel() {
-  return (
-      <Carousel autoPlay="true">
-          <div>
-              <img alt="tree1" src="https://www.telegraph.co.uk/content/dam/news/2016/09/08/107667228_beech-tree-NEWS_trans_NvBQzQNjv4BqplGOf-dgG3z4gg9owgQTXEmhb5tXCQRHAvHRWfzHzHk.jpg" />
-              <p className="legend">Legend 1</p>
-          </div>
-          <div>
-              <img alt="tree1" src="https://www.telegraph.co.uk/content/dam/news/2016/09/08/107667228_beech-tree-NEWS_trans_NvBQzQNjv4BqplGOf-dgG3z4gg9owgQTXEmhb5tXCQRHAvHRWfzHzHk.jpg?imwidth=450" />
-              <p className="legend">Legend 2</p>
-          </div>
-          <div>
-              <img alt="tree1" src="https://www.telegraph.co.uk/content/dam/news/2016/09/08/107667228_beech-tree-NEWS_trans_NvBQzQNjv4BqplGOf-dgG3z4gg9owgQTXEmhb5tXCQRHAvHRWfzHzHk.jpg?imwidth=450" />
-              <p className="legend">Legend 3</p>
-          </div>
-      </Carousel>
-  );
 }
 
 export default Songdetail;
