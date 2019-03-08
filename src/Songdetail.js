@@ -8,7 +8,8 @@ import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
 const FLICKR = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&text=\'Neil Diamond\'&per_page=5';
-const FLICKR_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=';
+const FLICKR_PHOTO_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=';
+const FLICKR_USER_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&user_id=';
 
 class Songdetail extends Component {
 
@@ -22,9 +23,17 @@ class Songdetail extends Component {
   }
 
 findPhoto(photoId) {
-  axios.get(FLICKR_DETAIL + photoId)
+  axios.get(FLICKR_PHOTO_DETAIL + photoId)
   .then(response => {
     const photo = response.data.photo;
+
+    // console.log(photo.owner.nsid)
+    axios.get(FLICKR_USER_DETAIL + photo.owner.nsid)
+    .then(response => {
+      const person = response.data.person;
+      console.log(person);
+    })
+
     const newPhotos = update(this.state.photos, {$push: [photo]});
     this.setState({ photos: newPhotos});
   });
@@ -42,10 +51,10 @@ findPhoto(photoId) {
       .then(response => {
         for (var i=0; i < response.data.photos.photo.length; i++){
           var photo = response.data.photos.photo[i];
-          console.log(photo.id);
+          // console.log(photo.id);
           this.findPhoto(photo.id)
         }
-        console.log(response.data);
+        // console.log(response.data);
       })
   }
 
