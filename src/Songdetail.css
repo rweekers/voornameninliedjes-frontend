@@ -13,8 +13,12 @@ ul {
 
 .background {
   font-size: 0.7em;
-  width: 20%;
+  width: 26%;
   margin: 5%;
+}
+
+.spotify {
+  margin: 8% 0 0 5%;
 }
 
 .image {

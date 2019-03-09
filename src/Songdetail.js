@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
-const FLICKR = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&text=\'Neil Diamond\'&per_page=5';
+const FLICKR = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&per_page=5&text=';
 const FLICKR_PHOTO_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=';
 const FLICKR_USER_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&user_id=';
 
@@ -27,12 +27,11 @@ findPhoto(photoId) {
   .then(response => {
     const photo = response.data.photo;
 
-    // console.log(photo.owner.nsid)
     axios.get(FLICKR_USER_DETAIL + photo.owner.nsid)
-    .then(response => {
-      const person = response.data.person;
-      console.log(person);
-    })
+      .then(response => {
+        const person = response.data.person;
+        console.log(person);
+      })
 
     const newPhotos = update(this.state.photos, {$push: [photo]});
     this.setState({ photos: newPhotos});
@@ -44,18 +43,17 @@ findPhoto(photoId) {
 
     axios.get(API + this.id)
       .then(response => {
-        this.setState({ song: response.data });
-      });
+        const song = response.data;
+        this.setState({ song: song });
 
-    axios.get(FLICKR)
-      .then(response => {
-        for (var i=0; i < response.data.photos.photo.length; i++){
-          var photo = response.data.photos.photo[i];
-          // console.log(photo.id);
-          this.findPhoto(photo.id)
-        }
-        // console.log(response.data);
-      })
+        axios.get(FLICKR + song.artist)
+        .then(response => {
+          for (var i=0; i < response.data.photos.photo.length; i++){
+            var photo = response.data.photos.photo[i];
+            this.findPhoto(photo.id)
+          }
+        })
+      });
   }
 
   render() {
@@ -71,21 +69,18 @@ findPhoto(photoId) {
             <p>{song.background}</p>
           </div>
 
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Neil_Diamond_Aladdin_Theater_For_the_Performing_Arts_1976.jpg" alt={song.artist} className="image" />
+          <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" className="spotify" width="200" height="250" title={song.artist - song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
         </div>
 
-        <Carousel autoPlay="true" infiniteLoop="true" width="300px">
+        <Carousel autoPlay={true} infiniteLoop={true} thumbWidth="10px">
             {photos.map(photo =>
-              <div>
-                <img alt={photo.title} src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`} />
+              <div key={photo.id}>
+                <img alt={photo.title} src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`} />
                 <p className="legend">{song.artist}</p>
               </div>
             )}
-        </Carousel>
-
-        <YouTubeVideo yt={song.youtube} />
-        <br />
-        <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" width="300" height="380" title="test" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </Carousel>
       </div>
     );
   }
