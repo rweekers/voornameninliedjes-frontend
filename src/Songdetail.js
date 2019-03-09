@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import update from 'immutability-helper';
 import axios from "axios";
 import YouTube from 'react-youtube';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import Carousel from 'react-bootstrap/Carousel';
 import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
@@ -69,18 +68,23 @@ findPhoto(photoId) {
             <p>{song.background}</p>
           </div>
 
-          <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" className="spotify" width="200" height="250" title={song.artist - song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" className="spotify" width="200" height="250" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
         </div>
 
-        <Carousel autoPlay={true} infiniteLoop={true} thumbWidth="10px">
-            {photos.map(photo =>
-              <div key={photo.id}>
-                <img alt={photo.title} src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`} />
-                <p className="legend">{song.artist}</p>
-              </div>
-            )}
-          </Carousel>
+        <Carousel>
+          {photos.map(photo =>
+            <Carousel.Item key={photo.id}>
+            <img
+              src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+              alt={photo.title}
+            />
+            <Carousel.Caption>
+              <h3>{song.artist}</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          )}
+        </Carousel>
       </div>
     );
   }
