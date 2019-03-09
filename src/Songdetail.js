@@ -47,7 +47,7 @@ findPhoto(photoId) {
         song.spotify = '62AuGbAkt8Ox2IrFFb8GKV';
         this.setState({ song: song });
 
-        axios.get(FLICKR + song.artist + ' ' + song.title)
+        axios.get(FLICKR + '\'' + song.artist + '\'')
         .then(response => {
           for (var i=0; i < response.data.photos.photo.length; i++){
             var photo = response.data.photos.photo[i];
@@ -87,6 +87,7 @@ findPhoto(photoId) {
             <img
               src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
               alt={photo.title}
+              width="500px"
             />
             <Carousel.Caption>
               <h3>{song.artist}</h3>
