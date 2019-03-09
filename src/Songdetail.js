@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
+import { Link } from "react-router-dom";
 import axios from "axios";
 import YouTube from 'react-youtube';
 import Carousel from 'react-bootstrap/Carousel';
@@ -43,9 +44,10 @@ findPhoto(photoId) {
     axios.get(API + this.id)
       .then(response => {
         const song = response.data;
+        song.spotify = '62AuGbAkt8Ox2IrFFb8GKV';
         this.setState({ song: song });
 
-        axios.get(FLICKR + song.artist)
+        axios.get(FLICKR + song.artist + ' ' + song.title)
         .then(response => {
           for (var i=0; i < response.data.photos.photo.length; i++){
             var photo = response.data.photos.photo[i];
@@ -61,6 +63,7 @@ findPhoto(photoId) {
 
     return (
       <div className="Songdetail">
+      <Link to='/'><h2>Terug</h2></Link>{' '}
         <p>{song.artist} - {song.title}</p>
 
         <div className="test">       
@@ -68,11 +71,17 @@ findPhoto(photoId) {
             <p>{song.background}</p>
           </div>
 
-          <iframe src="https://open.spotify.com/embed/track/62AuGbAkt8Ox2IrFFb8GKV" className="spotify" width="200" height="250" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="200" height="250" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
         </div>
 
         <Carousel>
+        <Carousel.Item key={song.id}>
+            <YouTube yt={song.youtube} />
+            <Carousel.Caption>
+              <h3>{song.artist}</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
           {photos.map(photo =>
             <Carousel.Item key={photo.id}>
             <img
