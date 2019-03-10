@@ -10,7 +10,6 @@ class Songrow extends Component {
     return (
       <div className="Songrow">
         <Link to={'/song/' + song.id}><p>{song.artist} - {song.title}</p></Link>{' '}
-        <iframe src={`https://open.spotify.com/embed/track/${spotify}`} className="spotify" width="200" height="250" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     );
   }
