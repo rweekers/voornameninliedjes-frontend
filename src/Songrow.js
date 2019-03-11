@@ -5,7 +5,6 @@ import './Songrow.css';
 class Songrow extends Component {
   render() {
     const song = this.props;
-    const spotify = '62AuGbAkt8Ox2IrFFb8GKV';
 
     return (
       <div className="Songrow">
