@@ -5,12 +5,12 @@ import axios from "axios";
 import YouTube from 'react-youtube';
 import Carousel from 'react-bootstrap/Carousel';
 import './Songdetail.css';
-import { Thumbs } from 'react-responsive-carousel';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
-const FLICKR = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&per_page=5&text=';
+const FLICKR = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&tags=music&text=';
 const FLICKR_PHOTO_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=';
 const FLICKR_USER_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&user_id=';
+const NUMBER_OF_PHOTOS = 5;
 
 class Songdetail extends Component {
 
@@ -19,7 +19,6 @@ class Songdetail extends Component {
 
     this.state = {
       song: '',
-      flickrPhotos: [],
       photos: []
     };
   }
@@ -34,12 +33,9 @@ findPhoto(photoId) {
         const person = response.data.person;
         // console.log(person);
       })
+
     const newPhotos = update(this.state.photos, {$push: [photo]});
-    const song = this.state.song;
-    song.photos = newPhotos;
-    console.log(song);
-    this.setState({ song: song });
-    // this.setState({ photos: newPhotos});
+    this.setState({ photos: newPhotos});
   });
 }
 
@@ -49,18 +45,32 @@ findPhoto(photoId) {
     axios.get(API + this.id)
       .then(response => {
         const song = response.data;
-        song.spotify = '62AuGbAkt8Ox2IrFFb8GKV';
         this.setState({ song: song });
 
         for (var i=0; i < song.flickrPhotos.length; i++) {
           this.findPhoto(song.flickrPhotos[i]);
+        }
+
+        const toSearch = Math.max(NUMBER_OF_PHOTOS - song.flickrPhotos.length, 0);
+
+        if (toSearch > 0) {
+          const searchPerPage = '&per_page=' + toSearch;
+
+          axios.get(FLICKR + '\'' + song.artist + '\'' + searchPerPage)
+          .then(response => {
+            for (var i=0; i < response.data.photos.photo.length; i++){
+              var photo = response.data.photos.photo[i];
+              this.findPhoto(photo.id)
+            }
+          })
         }
       });
   }
 
   render() {
     const song = this.state.song;
-    console.log(song);
+    const photos = this.state.photos;
+
     return (
       <div className="Songdetail">
       <Link to='/'><h2>Terug</h2></Link>{' '}
@@ -71,47 +81,46 @@ findPhoto(photoId) {
             <p>{song.background}</p>
           </div>
 
-          <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="200" height="250" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <div>
+          {song.spotify &&
+            <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="200" height="250" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          }
+          </div>
 
         </div>
 
-        <CarouselElement {...song} photos={[song.photos]} />
+        <Carousel controls={true}>
+          {song.youtube &&
+          <Carousel.Item key={song.id}>
+            <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`}></iframe>
+            <Carousel.Caption>
+              <h3>{song.artist}</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          }
+          {photos.map(photo =>
+            <Carousel.Item key={photo.id}>
+              <img
+                src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+                alt={photo.title}
+                width="500px"
+              />
+            <Carousel.Caption>
+              <h3>{song.artist}</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          )}
+        </Carousel>
       </div>
     );
   }
 }
 
-function CarouselElement(props) {
-  const song = props;
-  console.log(props);
-  if (song.youtube || (song.flickrPhotos && song.flickrPhotos.length > 1)) {
-    return <Carousel>
-      <Carousel.Item key={song.id}>
-        <YouTube yt={song.youtube} />
-        <Carousel.Caption>
-          <h3>{song.artist}</h3>
-        </Carousel.Caption>
-      </Carousel.Item>
-      {song.photos.map(photo =>
-        <Carousel.Item key={photo.id}>
-        <img
-          src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
-          alt={photo.title}
-          width="500px"
-        />
-        <Carousel.Caption>
-          <h3>{song.artist}</h3>
-        </Carousel.Caption>
-      </Carousel.Item>
-      )}
-    </Carousel>;
-  }
-  return null;
-}
-
 function YouTubeVideo(props) {
   if (props.yt) { 
-    return <YouTube videoId={props.yt} />; 
+    return <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src={`https://www.youtube.com/embed/${props.yt}?rel=0`}></iframe>
+          </div>
   } 
   else { 
     return <p>No video found</p>; 
