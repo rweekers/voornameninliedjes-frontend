@@ -77,17 +77,17 @@ class Songdetail extends Component {
       <div className="Songdetail">
         <Container>
           <Row className="justify-content-md-center">
-            <Link to='/'><h2>Terug</h2></Link>{' '}
+            <Link to='/'><h3>Terug naar overzicht</h3></Link>{' '}
           </Row>
           <Row className="justify-content-md-center">
-            <p>{song.artist} - {song.title}</p>
+            <div><h1>{song.artist}</h1><span><h2>{song.title}</h2></span></div>
           </Row>
           <Row>
-            <Col xs={6}>
+            <Col xs={6} className="background">
               <p>{song.background}</p>
             </Col>
-            <Col>            {song.spotify &&
-              <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="200" height="250" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <Col className="spotify">            {song.spotify &&
+              <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="300" height="80" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             }
               {!song.spotify &&
                 <div>
@@ -101,7 +101,7 @@ class Songdetail extends Component {
             <Carousel controls={true}>
               {song.youtube &&
                 <Carousel.Item key={song.id}>
-                  <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`} title={song.title}></iframe>
+                  <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`} title={song.title} height="300px" width="500px"></iframe>
                   <Carousel.Caption>
                     <h3>{song.artist}</h3>
                   </Carousel.Caption>
@@ -112,7 +112,7 @@ class Songdetail extends Component {
                   <img
                     src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
                     alt={photo.title}
-                    width="500px"
+                    height="300px"
                   />
                   <Carousel.Caption>
                     <h3>{song.artist}</h3>

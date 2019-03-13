@@ -1,9 +1,27 @@
-ul {
-  list-style-type: none;
+h1 {
+  text-align: center;
+  font-size: 0.7em;
+  font-weight: 200;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  vertical-align: middle;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  vertical-align: middle;
+}
+
+h3 {
+  font-size: 0.5em;
+  font-weight: 200;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 p {
   font-size: 0.7em;
+  font-weight: 200;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
@@ -11,14 +29,8 @@ p {
   font-size: 1.0em;
 }
 
-.test {
-  display: flex;
-  margin: 0 0 0 30%;
-}
-
 .background {
-  font-size: 0.7em;
-  width: 26%;
+  width: 30%;
   margin: 5%;
 }
 
