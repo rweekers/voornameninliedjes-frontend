@@ -1,4 +1,19 @@
-h1 {
+.Songdetail {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+a {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: orange;
+}
+
+a:hover {
+  text-decoration: none;
+  color: orange;
+  font-style: italic;
+}
+
+h1 { 
   text-align: center;
   font-size: 0.7em;
   font-weight: 200;
@@ -31,11 +46,22 @@ p {
 
 .background {
   width: 30%;
-  margin: 5%;
+  margin: 0 0 0 0;
 }
 
 .spotify {
-  margin: 8% 0 0 5%;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.spotify.container {
+  /* height: 90%; */
+}
+
+.spotify a {
+  font-size: 0.5em;
+  position: relative;
+  top: -50px; left: -100px;
 }
 
 .image {

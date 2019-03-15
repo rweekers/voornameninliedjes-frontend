@@ -83,16 +83,16 @@ class Songdetail extends Component {
             <div><h1>{song.artist}</h1><span><h2>{song.title}</h2></span></div>
           </Row>
           <Row>
-            <Col xs={6} className="background">
+            <Col xs={5} className="background">
               <p>{song.background}</p>
             </Col>
-            <Col className="spotify">            {song.spotify &&
+            <Col xs={4} className="spotify">            {song.spotify &&
               <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="300" height="80" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             }
               {!song.spotify &&
-                <div>
-                  <p><a href="https://giphy.com/gifs/cinemagraph-relaxing-jeff-bridges-96X6Pjaquq7cI">No spotify links yet!</a></p>
-                  <iframe src="https://giphy.com/embed/96X6Pjaquq7cI" width="480" height="288" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                <div className="container">
+                  <iframe src="https://giphy.com/embed/96X6Pjaquq7cI" width="480" height="288" frameBorder="0" class="giphy-embed" title="Lebowski Giphy" allowFullScreen></iframe>
+                  <a href="https://giphy.com/gifs/cinemagraph-relaxing-jeff-bridges-96X6Pjaquq7cI">No spotify links yet!</a>
                 </div>
               }
             </Col>
