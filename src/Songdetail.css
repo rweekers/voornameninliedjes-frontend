@@ -2,6 +2,10 @@
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+.terug {
+  margin-bottom: 2%;
+}
+
 a {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   color: orange;
@@ -13,19 +17,20 @@ a:hover {
   font-style: italic;
 }
 
-h1 { 
+.artist h1 { 
   text-align: center;
   font-size: 0.7em;
   font-weight: 200;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   vertical-align: middle;
+  padding-top: 5%;
+  padding-bottom: 0;
 }
 
-h2 {
+.artist h2 {
   font-size: 1.5em;
   font-weight: 500;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   vertical-align: middle;
+  padding-bottom: 8%;
 }
 
 h3 {
@@ -54,18 +59,30 @@ p {
   padding: 0 0 0 0;
 }
 
-.spotify.container {
-  /* height: 90%; */
-}
-
-.spotify a {
-  font-size: 0.5em;
+#gliffy-container {
   position: relative;
-  top: -50px; left: -100px;
+  margin-left: 15%;
 }
 
-.image {
-  width: 20%;
-  height: 20%;
-  margin: 8% 0 0 5%;
+#gliffy-embed {
+  width: 100%;
+  height: auto;
+}
+
+#gliffy-text {
+  z-index: 100;
+  position: absolute;
+  color: white;
+  left: 10%;
+  top: 90%;
+  transform: translateY(-50%);
+}
+
+#gliffy-link {
+  font-size: 0.8vw;
+  margin: 0;
+}
+
+#carousel {
+  margin-top: 5%;
 }

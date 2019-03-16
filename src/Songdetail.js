@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Carousel from 'react-bootstrap/Carousel';
+import noSpotifyImage from './no-spotify.jpg';
 import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
@@ -77,10 +78,10 @@ class Songdetail extends Component {
       <div className="Songdetail">
         <Container>
           <Row className="justify-content-md-center">
-            <Link to='/'><h3>Terug naar overzicht</h3></Link>{' '}
+            <Link to='/' className="terug"><h3>Terug naar overzicht</h3></Link>{' '}
           </Row>
           <Row className="justify-content-md-center">
-            <div><h1>{song.artist}</h1><span><h2>{song.title}</h2></span></div>
+            <div className="artist"><h1>{song.artist}</h1><span><h2>{song.title}</h2></span></div>
           </Row>
           <Row>
             <Col xs={5} className="background">
@@ -90,14 +91,16 @@ class Songdetail extends Component {
               <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="300" height="80" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             }
               {!song.spotify &&
-                <div className="container">
-                  <iframe src="https://giphy.com/embed/96X6Pjaquq7cI" width="480" height="288" frameBorder="0" class="giphy-embed" title="Lebowski Giphy" allowFullScreen></iframe>
-                  <a href="https://giphy.com/gifs/cinemagraph-relaxing-jeff-bridges-96X6Pjaquq7cI">No spotify links yet!</a>
+                <div id="gliffy-container">
+                  <img id="no-spotify" src={noSpotifyImage} />
+                  <div id="gliffy-text">
+                    <a id="gliffy-link" href="https://giphy.com/gifs/cinemagraph-relaxing-jeff-bridges-96X6Pjaquq7cI">No spotify links yet!</a>
+                  </div>
                 </div>
               }
             </Col>
           </Row>
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-md-center" id="carousel">
             <Carousel controls={true}>
               {song.youtube &&
                 <Carousel.Item key={song.id}>
