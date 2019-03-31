@@ -76,7 +76,12 @@ class Songdetail extends Component {
 
     return (
       <div className="Songdetail">
-        <Container>
+        <header className="song-title"><h1>{song.artist}</h1><h2>{song.title}</h2></header>
+        <content className="song-text">Achtergrond <Link to='/' className="terug"><h3>Terug naar overzicht</h3></Link>{' '}</content>
+        <aside className="song-spotify">Spotify</aside>
+        <aside className="song-youtube">Youtube</aside>
+        <aside className="song-photos">Photos</aside>
+        {/* <Container>
           <Row className="justify-content-md-center">
             <Link to='/' className="terug"><h3>Terug naar overzicht</h3></Link>{' '}
           </Row>
@@ -124,7 +129,7 @@ class Songdetail extends Component {
               )}
             </Carousel>
           </Row>
-        </Container>
+        </Container> */}
       </div>
     );
   }

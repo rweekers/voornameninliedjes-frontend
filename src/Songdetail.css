@@ -1,7 +1,58 @@
 .Songdetail {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-areas:
+    "song-title"
+    "song-spotify"
+    "song-text"
+    "song-photos"
+    "song-youtube";
+  grid-template-rows: 1fr 2fr 15fr 5fr 5fr;
 }
 
+@media (min-width: 400px) {
+  .Songdetail {
+    grid-template-areas:
+      "song-title song-title song-title"
+      "song-spotify song-text song-youtube"
+      "song-photos song-photos song-photos";
+    grid-template-rows: 1fr 10fr 3fr;
+    grid-template-columns: 1fr 3fr 2fr;
+  }
+}
+
+.song-title {
+  grid-area: song-title;
+  background-color: blue;
+}
+
+.song-text {
+  grid-area: song-text;
+  background-color: orange;
+}
+
+.song-photos {
+  grid-area: song-photos;
+  background-color: #282c34;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white; */
+}
+
+.song-youtube {
+  grid-area: song-youtube;
+  background-color: pink;
+}
+
+.song-spotify {
+  grid-area: song-spotify;
+  background-color: aqua;
+}
+/* 
 .terug {
   margin-bottom: 2%;
 }
@@ -16,7 +67,7 @@ a:hover {
   color: orange;
   font-style: italic;
 }
-
+*/
 .artist h1 { 
   text-align: center;
   font-size: 0.7em;
@@ -32,7 +83,7 @@ a:hover {
   vertical-align: middle;
   padding-bottom: 8%;
 }
-
+/*
 h3 {
   font-size: 0.5em;
   font-weight: 200;
@@ -44,11 +95,11 @@ p {
   font-weight: 200;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
+*/
 .Songdetail {
   font-size: 1.0em;
 }
-
+/*
 .background {
   width: 30%;
   margin: 0 0 0 0;
@@ -85,4 +136,4 @@ p {
 
 #carousel {
   margin-top: 5%;
-}
+} */

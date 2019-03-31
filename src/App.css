@@ -1,3 +1,8 @@
+html {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 62.5%; /* font-size 1em = 10px on default browser settings */ 
+}
+
 .app {
   display: grid;
   height: 100vh;
@@ -10,7 +15,7 @@
   grid-template-rows: 5fr 0fr 15fr 0fr 1fr;
 }
 
-aside { 
+.app-side-left.app-side-right { 
   display: none; 
 }
 
@@ -20,17 +25,28 @@ aside {
       "header header header"
       "sidebar-one content sidebar-two"
       "footer footer footer";
-    grid-template-rows: 5fr 25fr 1fr;
+    grid-template-rows: 3fr 25fr 1fr;
     grid-template-columns: 1fr 4fr 1fr;
   }
-  aside {
+  .app-side-left.app-side-right {
     display: inline;
   }
 }
 
+.app > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .app-header {
   grid-area: header;
-  background-color: orange;
+  background-color: lightgray;
+  font-size: 5em;
+  font-weight: 200;
+  color: black;
+  height: 100px;
 }
 
 .app-section {
@@ -46,17 +62,20 @@ aside {
 
 .app-side-left {
   grid-area: sidebar-one;
-  background-color: pink;
+  background-color: darkgoldenrod;
 }
 
 .app-side-right {
   grid-area: sidebar-two;
-  background-color: aqua;
+  background-color: darkgoldenrod;
 }
 
 .app-footer {
   grid-area: footer;
-  background-color: green;
+  background-color: darkgray;
+  color: white;
+  font-size: 0.9em;
+  font-weight: 300;
 }
 
 @keyframes App-logo-spin {
