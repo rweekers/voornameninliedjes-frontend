@@ -92,7 +92,7 @@ class Songdetail extends Component {
             }
               {!song.spotify &&
                 <div id="gliffy-container">
-                  <img id="no-spotify" src={noSpotifyImage} />
+                  <img id="no-spotify" src={noSpotifyImage} alt="spotify-not-found" />
                   <div id="gliffy-text">
                     <a id="gliffy-link" href="https://giphy.com/gifs/cinemagraph-relaxing-jeff-bridges-96X6Pjaquq7cI">No spotify links yet!</a>
                   </div>

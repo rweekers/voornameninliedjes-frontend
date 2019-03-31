@@ -26,17 +26,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="app">
+        <header className="app-header" />
+        <aside className="app-side-left" />
+        <aside className="app-side-right" />
+        <content className="app-section">
           <Router>
-            <div>
-              <Switch>
-                <Route exact path="/" component={() => <Songlist songs={this.state.songs} />} />
-                <Route path="/song/:id" component={Songdetail} />
-              </Switch>
-            </div>
-          </Router>
-        </header>
+              <div>
+                <Switch>
+                  <Route exact path="/" component={() => <Songlist songs={this.state.songs} />} />
+                  <Route path="/song/:id" component={Songdetail} />
+                </Switch>
+              </div>
+            </Router>
+        </content>
+        <footer className="app-footer" />
       </div>
     );
   }
