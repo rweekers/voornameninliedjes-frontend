@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
-import { Link } from "react-router-dom";
 import axios from "axios";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Carousel from 'react-bootstrap/Carousel';
-import noSpotifyImage from './no-spotify.jpg';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+// import Carousel from 'react-bootstrap/Carousel';
+// import noSpotifyImage from './no-spotify.jpg';
 import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
@@ -72,12 +71,12 @@ class Songdetail extends Component {
 
   render() {
     const song = this.state.song;
-    const photos = this.state.photos;
+    // const photos = this.state.photos;
 
     return (
       <div className="Songdetail">
         <header className="song-title"><h1>{song.artist}</h1><h2>{song.title}</h2></header>
-        <content className="song-text">Achtergrond <Link to='/' className="terug"><h3>Terug naar overzicht</h3></Link>{' '}</content>
+        <content className="song-text">{song.background}</content>
         <aside className="song-spotify">Spotify</aside>
         <aside className="song-youtube">Youtube</aside>
         <aside className="song-photos">Photos</aside>

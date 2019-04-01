@@ -24,12 +24,27 @@
 
 .song-title {
   grid-area: song-title;
-  background-color: blue;
+  background-color: white;
+  color: black;
+}
+
+.song-title h1 {
+  color: darkgray;
+  font-weight: 200;
+}
+
+.song-title h2 {
+  color: black;
+  font-weight: 400;
 }
 
 .song-text {
   grid-area: song-text;
-  background-color: orange;
+  background-color: lightgray;
+  color: black;
+  font-size: 0.8em;
+  font-weight: 100;
+  margin: 0 10 0 10;
 }
 
 .song-photos {
@@ -45,12 +60,12 @@
 
 .song-youtube {
   grid-area: song-youtube;
-  background-color: pink;
+  background-color: red;
 }
 
 .song-spotify {
   grid-area: song-spotify;
-  background-color: aqua;
+  background-color: #1db954;
 }
 /* 
 .terug {

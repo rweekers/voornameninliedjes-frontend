@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import './App.css';
 import Songlist from './Songlist';
@@ -26,20 +27,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
-        <header className="app-header">Voornamen in liedjes</header>
-        <aside className="app-side-left" />
-        <aside className="app-side-right" />
-        <content className="app-section">
-          <Router>
+      <Router>
+        <div className="app">
+          <header className="app-header"><Link to='/'>Voornamen in liedjes</Link></header>
+          <aside className="app-side-left" />
+          <aside className="app-side-right" />
+          <content className="app-section">
             <Switch>
               <Route exact path="/" component={() => <Songlist songs={this.state.songs} />} />
               <Route path="/song/:id" component={Songdetail} />
             </Switch>
-          </Router>
-        </content>
-        <footer className="app-footer">&copy; 2019 OrangeFlamingo</footer>
-      </div>
+          </content>
+          <footer className="app-footer">&copy; 2019 OrangeFlamingo</footer>
+        </div>
+      </Router>
     );
   }
 }
