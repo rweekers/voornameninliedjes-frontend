@@ -67,12 +67,18 @@ html {
 
 .app-side-left {
   grid-area: sidebar-one;
-  background-color: darkgoldenrod;
+  /* background-color: darkgoldenrod; */
+  background-image: url('right-side.png');
+  background-position: top left;
+  background-size: 500px;
 }
 
 .app-side-right {
   grid-area: sidebar-two;
-  background-color: darkgoldenrod;
+  /* background-color: darkgoldenrod; */
+  background-image: url('right-side.png');
+  background-position: top left;
+  background-size: 500px;
 }
 
 .app-footer {
