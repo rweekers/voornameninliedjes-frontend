@@ -17,14 +17,15 @@
       "song-title song-title"
       "song-spotify song-text"
       "song-youtube song-text";
-      /* "song-photos song-text"; */
-    /* grid-template-rows: 1fr 2fr 4fr 6fr;
-    grid-template-rows: 1fr minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, 4fr); */
     grid-template-columns: 5fr 6fr;
   }
 
   .song-spotify {
     height: auto;
+  }
+
+  .song-youtube {
+    height: 200px;
   }
 }
 
@@ -64,6 +65,7 @@
 .song-youtube {
   grid-area: song-youtube;
   background-color: red;
+  height: 300px;
 }
 
 .song-spotify {
