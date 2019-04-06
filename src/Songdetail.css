@@ -22,6 +22,10 @@
     grid-template-rows: 1fr minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, 4fr); */
     grid-template-columns: 5fr 6fr;
   }
+
+  .song-spotify {
+    height: auto;
+  }
 }
 
 .song-title {
@@ -65,4 +69,5 @@
 .song-spotify {
   grid-area: song-spotify;
   background-color: #1db954;
+  height: 80px;
 }
