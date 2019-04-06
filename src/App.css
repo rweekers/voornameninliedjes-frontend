@@ -24,7 +24,7 @@ html {
   display: none; 
 }
 
-@media (min-width: 400px) {
+@media (min-width: 700px) {
   .app {
     grid-template-areas:
       "header header header"
@@ -49,7 +49,7 @@ html {
   grid-area: header;
   display: flex;
   justify-content: space-between;
-  background-color: lightgray;
+  background-color: darkgray;
   height: 100%;
 }
 
@@ -93,7 +93,12 @@ html {
   grid-area: footer;
   display: flex;
   justify-content: space-between;
-  background-color: darkgray;
+  background-color: black;
+}
+
+.app-footer h1 {
+  color: black;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   color: white;
   font-size: 0.9em;
   font-weight: 300;

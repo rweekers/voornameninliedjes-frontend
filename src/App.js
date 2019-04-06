@@ -40,7 +40,7 @@ class App extends Component {
               <Route path="/song/:id" component={Songdetail} />
             </Switch>
           </content>
-          <footer className="app-footer"><p></p><p>&copy; 2019 OrangeFlamingo</p><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></footer>
+          <footer className="app-footer"><p></p><h1>&copy; 2019 OrangeFlamingo</h1><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></footer>
         </div>
       </Router>
     );
