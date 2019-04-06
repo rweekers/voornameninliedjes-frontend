@@ -77,9 +77,13 @@ class Songdetail extends Component {
       <div className="Songdetail">
         <header className="song-title"><h1>{song.artist}</h1><h2>{song.title}</h2></header>
         <content className="song-text">{song.background}</content>
-        <aside className="song-spotify">Spotify</aside>
-        <aside className="song-youtube">Youtube</aside>
-        <aside className="song-photos">Photos</aside>
+        <aside className="song-spotify">
+          <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="100%" height="100%" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </aside>
+        <aside className="song-youtube">
+          <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`} width="100%" height="100%" title={song.title}></iframe>
+        </aside>
+        {/* <aside className="song-photos">Photos</aside> */}
         {/* <Container>
           <Row className="justify-content-md-center">
             <Link to='/' className="terug"><h3>Terug naar overzicht</h3></Link>{' '}

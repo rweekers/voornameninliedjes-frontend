@@ -8,17 +8,19 @@
     "song-text"
     "song-photos"
     "song-youtube";
-  grid-template-rows: 1fr 2fr 15fr 5fr 5fr;
+  grid-auto-rows: min-content;
 }
 
 @media (min-width: 400px) {
   .Songdetail {
     grid-template-areas:
-      "song-title song-title song-title"
-      "song-spotify song-text song-youtube"
-      "song-photos song-photos song-photos";
-    grid-template-rows: 1fr 10fr 3fr;
-    grid-template-columns: 1fr 3fr 2fr;
+      "song-title song-title"
+      "song-spotify song-text"
+      "song-youtube song-text";
+      /* "song-photos song-text"; */
+    /* grid-template-rows: 1fr 2fr 4fr 6fr;
+    grid-template-rows: 1fr minmax(min-content, 2fr) minmax(min-content, 4fr) minmax(min-content, 4fr); */
+    grid-template-columns: 5fr 6fr;
   }
 }
 
@@ -30,12 +32,14 @@
 
 .song-title h1 {
   color: darkgray;
+  font-size: 2em;
   font-weight: 200;
 }
 
 .song-title h2 {
   color: black;
-  font-weight: 400;
+  font-size: 2.5em;
+  font-weight: 300;
 }
 
 .song-text {
@@ -45,6 +49,7 @@
   font-size: 0.8em;
   font-weight: 100;
   margin: 0 10 0 10;
+  padding: 20%;
 }
 
 .song-photos {
@@ -67,88 +72,3 @@
   grid-area: song-spotify;
   background-color: #1db954;
 }
-/* 
-.terug {
-  margin-bottom: 2%;
-}
-
-a {
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  color: orange;
-}
-
-a:hover {
-  text-decoration: none;
-  color: orange;
-  font-style: italic;
-}
-*/
-.artist h1 { 
-  text-align: center;
-  font-size: 0.7em;
-  font-weight: 200;
-  vertical-align: middle;
-  padding-top: 5%;
-  padding-bottom: 0;
-}
-
-.artist h2 {
-  font-size: 1.5em;
-  font-weight: 500;
-  vertical-align: middle;
-  padding-bottom: 8%;
-}
-/*
-h3 {
-  font-size: 0.5em;
-  font-weight: 200;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-
-p {
-  font-size: 0.7em;
-  font-weight: 200;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-}
-*/
-.Songdetail {
-  font-size: 1.0em;
-}
-/*
-.background {
-  width: 30%;
-  margin: 0 0 0 0;
-}
-
-.spotify {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-}
-
-#gliffy-container {
-  position: relative;
-  margin-left: 15%;
-}
-
-#gliffy-embed {
-  width: 100%;
-  height: auto;
-}
-
-#gliffy-text {
-  z-index: 100;
-  position: absolute;
-  color: white;
-  left: 10%;
-  top: 90%;
-  transform: translateY(-50%);
-}
-
-#gliffy-link {
-  font-size: 0.8vw;
-  margin: 0;
-}
-
-#carousel {
-  margin-top: 5%;
-} */

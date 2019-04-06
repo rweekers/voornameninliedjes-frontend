@@ -47,11 +47,21 @@ html {
 
 .app-header {
   grid-area: header;
+  display: flex;
+  justify-content: space-between;
   background-color: lightgray;
-  font-size: 5em;
-  font-weight: 200;
-  color: black;
   height: 100%;
+}
+
+.app-logo {
+  max-height: 60px;
+}
+
+.app-header h1 {
+  color: black;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 5em;
+  font-weight: 150;
 }
 
 .app-section {
@@ -67,7 +77,6 @@ html {
 
 .app-side-left {
   grid-area: sidebar-one;
-  /* background-color: darkgoldenrod; */
   background-image: url('right-side.png');
   background-position: top left;
   background-size: 500px;
@@ -75,7 +84,6 @@ html {
 
 .app-side-right {
   grid-area: sidebar-two;
-  /* background-color: darkgoldenrod; */
   background-image: url('right-side.png');
   background-position: top left;
   background-size: 500px;
@@ -83,10 +91,17 @@ html {
 
 .app-footer {
   grid-area: footer;
+  display: flex;
+  justify-content: space-between;
   background-color: darkgray;
   color: white;
   font-size: 0.9em;
   font-weight: 300;
+}
+
+.freebsd-logo {
+  max-height: 10px;
+  padding: 0 10px 0 0;
 }
 
 @keyframes App-logo-spin {

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import logo from './record.svg';
+import logofreebsd from './freebsd-logo.png';
 import './App.css';
 import Songlist from './Songlist';
 import Songdetail from './Songdetail';
@@ -29,7 +31,7 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-          <header className="app-header"><Link to='/'>Voornamen in liedjes</Link></header>
+          <header className="app-header"><Link to='/'><img src={logo} className="app-logo" alt="logo" /></Link><h1>Voornamen in liedjes</h1><p></p></header>
           <aside className="app-side-left" />
           <aside className="app-side-right" />
           <content className="app-section">
@@ -38,7 +40,7 @@ class App extends Component {
               <Route path="/song/:id" component={Songdetail} />
             </Switch>
           </content>
-          <footer className="app-footer">&copy; 2019 OrangeFlamingo</footer>
+          <footer className="app-footer"><p></p><p>&copy; 2019 OrangeFlamingo</p><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></footer>
         </div>
       </Router>
     );
