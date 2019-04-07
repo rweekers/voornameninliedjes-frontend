@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
 import axios from "axios";
-import showdown from "showdown";
 import ReactMarkdown from 'react-markdown';
 import './Songdetail.css';
 
@@ -36,15 +35,6 @@ class Songdetail extends Component {
         const newPhotos = update(this.state.photos, { $push: [photo] });
         this.setState({ photos: newPhotos });
       });
-  }
-
-  convertMdToHtml(text) {
-    var converter = new showdown.Converter(),
-    text      = '# hello, markdown!',
-    html      = converter.makeHtml(text);
-    console.log(text);
-    console.log(html);
-    return html;
   }
 
   componentDidMount() {
