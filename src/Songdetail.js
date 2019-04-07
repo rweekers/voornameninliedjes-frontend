@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
 import axios from "axios";
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-// import Carousel from 'react-bootstrap/Carousel';
-// import noSpotifyImage from './no-spotify.jpg';
+import showdown from "showdown";
+import ReactMarkdown from 'react-markdown';
 import './Songdetail.css';
 
 const API = 'https://api.voornameninliedjes.nl/songs/';
@@ -39,6 +36,15 @@ class Songdetail extends Component {
         const newPhotos = update(this.state.photos, { $push: [photo] });
         this.setState({ photos: newPhotos });
       });
+  }
+
+  convertMdToHtml(text) {
+    var converter = new showdown.Converter(),
+    text      = '# hello, markdown!',
+    html      = converter.makeHtml(text);
+    console.log(text);
+    console.log(html);
+    return html;
   }
 
   componentDidMount() {
@@ -76,7 +82,7 @@ class Songdetail extends Component {
     return (
       <div className="Songdetail">
         <header className="song-title"><h1>{song.artist}</h1><h2>{song.title}</h2></header>
-        <content className="song-text">{song.background}</content>
+        <content className="song-text"><ReactMarkdown source={song.background} /></content>
         <aside className="song-spotify">
           <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="100%" height="100%" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </aside>

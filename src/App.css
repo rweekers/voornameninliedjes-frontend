@@ -55,6 +55,7 @@ html {
 
 .app-logo {
   max-height: 60px;
+  padding: 0 0 0 10%;
 }
 
 .app-header h1 {
