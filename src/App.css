@@ -64,6 +64,18 @@ html {
   font-weight: 150;
 }
 
+.app-header h1 span::before {
+  content: "\A";
+  white-space: pre;
+}
+
+@media (min-width: 700px) {
+  .app-header h1 span::before {
+    content: normal;
+    white-space: normal;
+  }
+}
+
 .app-section {
   grid-area: content;
   background-color: #282c34;

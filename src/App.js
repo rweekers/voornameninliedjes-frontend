@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <Router>
         <div className="app">
-          <header className="app-header"><Link to='/'><img src={logo} className="app-logo" alt="logo" /></Link><h1>Voornamen in liedjes</h1><p></p></header>
+          <header className="app-header"><Link to='/'><img src={logo} className="app-logo" alt="logo" /></Link><h1>Voornamen <span>in liedjes</span></h1><p></p></header>
           <aside className="app-side-left" />
           <aside className="app-side-right" />
           <content className="app-section">
