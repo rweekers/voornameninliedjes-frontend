@@ -12,7 +12,7 @@
     "react-markdown": "^4.0.6",
     "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5",
+    "react-scripts": "^2.1.8",
     "react-youtube": "^7.9.0",
     "showdown": "^1.9.0"
   },
