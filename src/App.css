@@ -24,7 +24,7 @@ html {
   display: none; 
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1025px) {
   .app {
     grid-template-areas:
       "header header header"
@@ -70,7 +70,7 @@ html {
   white-space: pre;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1025px) {
   .app-header h1 span::before {
     content: normal;
     white-space: normal;

@@ -13,7 +13,7 @@
   grid-auto-rows: min-content;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1025px) {
   .Songdetail {
     grid-template-areas:
       "song-title song-title"
