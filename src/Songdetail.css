@@ -18,6 +18,7 @@
     grid-template-areas:
       "song-title song-title"
       "song-spotify song-text"
+      "song-photos song-text"
       "song-youtube song-text";
     grid-template-columns: 5fr 6fr;
   }
@@ -27,6 +28,11 @@
   }
 
   .song-youtube {
+    height: 200px;
+    align-self: flex-end
+  }
+
+  .song-photos {
     height: 200px;
     align-self: flex-end
   }
@@ -76,4 +82,10 @@
   grid-area: song-spotify;
   background-color: #1db954;
   height: 80px;
+}
+
+.song-photos {
+  grid-area: song-photos;
+  background-color: aqua;
+  height: 300px;
 }

@@ -79,6 +79,9 @@ class Songdetail extends Component {
         <aside className="song-youtube">
           <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`} width="100%" height="100%" title={song.title}></iframe>
         </aside>
+        <aside className="song-photos">
+          <h1>Here we will put the photos</h1>
+        </aside>
         {/* <aside className="song-photos">Photos</aside> */}
         {/* <Container>
           <Row className="justify-content-md-center">
