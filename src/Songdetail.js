@@ -29,10 +29,10 @@ class Songdetail extends Component {
         axios.get(FLICKR_USER_DETAIL + photo.owner.nsid)
           .then(response => {
             const person = response.data.person;
-            console.log(person);
+            // console.log(person);
           })
-
         const newPhotos = update(this.state.photos, { $push: [photo] });
+        // console.log(newPhotos);
         this.setState({ photos: newPhotos });
       });
   }
@@ -67,7 +67,10 @@ class Songdetail extends Component {
 
   render() {
     const song = this.state.song;
-    // const photos = this.state.photos;
+    const photos = this.state.photos;
+    // console.log(photos);
+    const photo = photos[0];
+    console.log(photo);
 
     return (
       <div className="Songdetail">
@@ -80,7 +83,10 @@ class Songdetail extends Component {
           <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`} width="100%" height="100%" title={song.title}></iframe>
         </aside>
         <aside className="song-photos">
-          <h1>Here we will put the photos</h1>
+          {/* <img
+            src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+            alt={photo.title}
+          /> */}
         </aside>
         {/* <aside className="song-photos">Photos</aside> */}
         {/* <Container>
