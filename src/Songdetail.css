@@ -33,7 +33,6 @@
   }
 
   .song-photos {
-    height: 200px;
     align-self: flex-end
   }
 }
@@ -69,7 +68,11 @@
 
 .song-photos {
   grid-area: song-photos;
-  background-color: #282c34;
+  background-color: black;
+}
+
+.song-photos img {
+  max-width: 100%;
 }
 
 .song-youtube {
@@ -82,10 +85,4 @@
   grid-area: song-spotify;
   background-color: #1db954;
   height: 80px;
-}
-
-.song-photos {
-  grid-area: song-photos;
-  background-color: aqua;
-  height: 300px;
 }
