@@ -6,3 +6,7 @@ ul {
   color: white;
   text-decoration: none;
 }
+
+.Songlist a:hover {
+  color: orange;  
+}

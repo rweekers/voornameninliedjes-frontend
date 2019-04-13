@@ -24,25 +24,6 @@ html {
   display: none; 
 }
 
-@media (min-width: 1025px) {
-  .app {
-    grid-template-areas:
-      "header header header"
-      "sidebar-one content sidebar-two"
-      "footer footer footer";
-    grid-template-rows: 3fr 25fr 1fr;
-    grid-template-columns: 1fr 4fr 1fr;
-  }
-  .app-side-left.app-side-right {
-    display: inline;
-  }
-  /* Check (not working yet) */
-  .app-header {
-    background-image: none;
-    background-color: white;
-  }
-}
-
 .app > * {
   display: flex;
   justify-content: center;
@@ -57,6 +38,7 @@ html {
   background-image: url('./top_image.jpeg');
   background-size: cover;
   background-color: darkgray;
+  background-position: bottom right;
   height: 100%;
 }
 
@@ -66,10 +48,10 @@ html {
 }
 
 .app-header h1 {
-  color: white;
+  color: orange;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 5em;
-  font-weight: 350;
+  font-weight: 300;
 }
 
 .app-header h1 span::before {
@@ -97,14 +79,14 @@ html {
 
 .app-side-left {
   grid-area: sidebar-one;
-  background-image: url('right-side.png');
+  background-image: url('left.jpeg');
   background-position: top left;
   background-size: 500px;
 }
 
 .app-side-right {
   grid-area: sidebar-two;
-  background-image: url('right-side.png');
+  background-image: url('right.png');
   background-position: top left;
   background-size: 500px;
 }
@@ -127,4 +109,22 @@ html {
 .freebsd-logo {
   max-height: 10px;
   padding: 0 10px 0 0;
+}
+
+@media (min-width: 1025px) {
+  .app {
+    grid-template-areas:
+      "header header header"
+      "sidebar-one content sidebar-two"
+      "footer footer footer";
+    grid-template-rows: 3fr 25fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+  .app-side-left.app-side-right {
+    display: inline;
+  }
+  .app-header {
+    background-image: none;
+    background-color: #696969;
+  }
 }
