@@ -35,10 +35,7 @@ html {
   grid-area: header;
   display: flex;
   justify-content: space-between;
-  background-image: url('./top_image.jpeg');
-  background-size: cover;
-  background-color: darkgray;
-  background-position: bottom right;
+  background-color: darkorange;
   height: 100%;
 }
 
@@ -47,11 +44,16 @@ html {
   padding: 0 0 0 10%;
 }
 
+.app-logo:hover {
+  animation: app-logo-spin infinite 20s linear;
+}
+
 .app-header h1 {
-  color: orange;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 5em;
-  font-weight: 300;
+  color: black;
+  font-family: Andale Mono, monospace;
+  font-size: 5.5em;
+  font-weight: 350;
+  padding: 0% 1% 0% 1%;
 }
 
 .app-header h1 span::before {
@@ -86,8 +88,9 @@ html {
 
 .app-side-right {
   grid-area: sidebar-two;
-  background-image: url('right.png');
-  background-position: top left;
+  background-image: url('right.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: 500px;
 }
 
@@ -123,8 +126,13 @@ html {
   .app-side-left.app-side-right {
     display: inline;
   }
-  .app-header {
-    background-image: none;
-    background-color: #696969;
+}
+
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
