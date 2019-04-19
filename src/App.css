@@ -35,7 +35,9 @@ html {
   grid-area: header;
   display: flex;
   justify-content: space-between;
-  background-color: darkorange;
+  background-color: black;
+  background-image: url('./header.jpeg');
+  background-size: cover;
   height: 100%;
 }
 
@@ -49,7 +51,7 @@ html {
 }
 
 .app-header h1 {
-  color: black;
+  color: orange;
   font-family: Andale Mono, monospace;
   font-size: 5.5em;
   font-weight: 350;
@@ -65,6 +67,13 @@ html {
   .app-header h1 span::before {
     content: normal;
     white-space: normal;
+  }
+  .app-header {
+    background-image: none;
+    background-color: darkorange;
+  }
+  .app-header h1 {
+    color: black;
   }
 }
 
