@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import logo from './record.svg';
+import logo from './record_gold.png';
 import logofreebsd from './freebsd-logo.png';
 import './App.css';
 import Songlist from './Songlist';
