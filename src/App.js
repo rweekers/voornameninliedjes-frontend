@@ -21,6 +21,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+    var user = 'foo',
+    domain = 'bar.com',
+    element = document.getElementById('email');
+
+    element.innerHTML = user + '@' + domain;
+
     axios.get(API)
       .then(response => {
         this.setState({ songs: response.data });
@@ -40,7 +46,7 @@ class App extends Component {
               <Route path="/song/:id" component={Songdetail} />
             </Switch>
           </content>
-          <footer className="app-footer"><p></p><h1>&copy; 2019 OrangeFlamingo</h1><a href="https://freebsd.org" target="blank"><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></a></footer>
+          <footer className="app-footer"><p></p><h1>&copy; 2019 OrangeFlamingo</h1><h2 id="email">info@voornameninliedjes.nl</h2><a href="https://freebsd.org" target="blank"><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></a></footer>
         </div>
       </Router>
     );
