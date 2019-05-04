@@ -111,11 +111,17 @@ html {
 }
 
 .app-footer h1 {
-  color: black;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   color: white;
   font-size: 0.9em;
   font-weight: 300;
+}
+
+.app-footer h2 {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: pink;
+  font-size: 0.9em;
+  font-weight: 200;
 }
 
 .freebsd-logo {
