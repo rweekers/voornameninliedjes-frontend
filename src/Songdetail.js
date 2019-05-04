@@ -63,6 +63,7 @@ class Songdetail extends Component {
             src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
             alt={photo.title}
           />
+          <p>This is some text with the photo</p>
         </aside>
       </div>
     );
