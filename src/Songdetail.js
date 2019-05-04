@@ -15,7 +15,8 @@ class Songdetail extends Component {
     this.state = {
       song: '',
       photo: '',
-      owner: ''
+      owner: '',
+      contribution: ''
     };
   }
 
@@ -30,11 +31,16 @@ class Songdetail extends Component {
             const photo = res.data.photo;
             axios.get(FLICKR_USER_DETAIL + photo.owner.nsid)
               .then(res => {
-                const owner = res.data;
+                const owner = res.data.person;
+                const contribution = {
+                    'owner': owner.username._content,
+                    'url': owner.photosurl._content
+                  };
                 this.setState({
                   song: song,
                   photo: photo,
-                  owner: owner
+                  owner: owner,
+                  contribution: contribution
                 });
               })
           })
@@ -45,8 +51,11 @@ class Songdetail extends Component {
     const song = this.state.song;
     const photo = this.state.photo;
     const owner = this.state.owner;
+    const contribution = this.state.contribution;
+    console.log(song);
     console.log(owner);
     console.log(photo);
+    console.log(contribution);
 
     return (
       <div className="Songdetail">
@@ -63,7 +72,7 @@ class Songdetail extends Component {
             src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
             alt={photo.title}
           />
-          <p>This is some text with the photo</p>
+          <p>{contribution.url}</p>
         </aside>
       </div>
     );
