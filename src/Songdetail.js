@@ -6,6 +6,7 @@ import './Songdetail.css';
 const API = 'https://api.voornameninliedjes.nl/songs/';
 const FLICKR_PHOTO_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&photo_id=';
 const FLICKR_USER_DETAIL = 'https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true&user_id=';
+const FLICKR_LICENCES = 'https://api.flickr.com/services/rest/?method=flickr.photos.licenses.getInfo&api_key=9676a28e9cb321d2721e813055abb6dc&format=json&nojsoncallback=true'
 
 class Songdetail extends Component {
 
@@ -33,8 +34,10 @@ class Songdetail extends Component {
               .then(res => {
                 const owner = res.data.person;
                 const contribution = {
-                    'owner': owner.username._content,
-                    'url': owner.photosurl._content
+                    'ownerName': owner.username._content,
+                    'ownerUrl': owner.photosurl._content,
+                    'photoTitle': photo.title._content,
+                    'photoUrl': photo.urls.url[0]._content
                   };
                 this.setState({
                   song: song,
@@ -72,7 +75,7 @@ class Songdetail extends Component {
             src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
             alt={photo.title}
           />
-          <p>{contribution.url}</p>
+          <div class="attribution"><a href={contribution.photoUrl}>Photo</a> by <a href={contribution.ownerUrl}>{contribution.ownerName}</a> / <a href=""> CC BY 2.0</a></div>
         </aside>
       </div>
     );
