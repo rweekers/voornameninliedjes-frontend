@@ -73,10 +73,11 @@
 }
 
 .song-photos .attribution {
+  background:rgba(0,0,0,0.6);
   font-size: 0.6em;
   font-weight: 100;
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
   margin-left: auto;
   margin-right: auto;
   left: 0;

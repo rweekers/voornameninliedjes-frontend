@@ -33,18 +33,27 @@ class Songdetail extends Component {
             axios.get(FLICKR_USER_DETAIL + photo.owner.nsid)
               .then(res => {
                 const owner = res.data.person;
-                const contribution = {
-                    'ownerName': owner.username._content,
-                    'ownerUrl': owner.photosurl._content,
-                    'photoTitle': photo.title._content,
-                    'photoUrl': photo.urls.url[0]._content
-                  };
-                this.setState({
-                  song: song,
-                  photo: photo,
-                  owner: owner,
-                  contribution: contribution
-                });
+                axios.get(FLICKR_LICENCES)
+                  .then(res => {
+                    const licenses = res.data.licenses.license;
+                    const license = licenses.find(x => x.id === photo.license);
+                    const licenseName = license.name;
+                    const licenseUrl = license.url;
+                    const contribution = {
+                      'ownerName': owner.username._content,
+                      'ownerUrl': owner.photosurl._content,
+                      'photoTitle': photo.title._content,
+                      'photoUrl': photo.urls.url[0]._content,
+                      'licenseName': licenseName,
+                      'licenseUrl': licenseUrl
+                    };
+                    this.setState({
+                      song: song,
+                      photo: photo,
+                      owner: owner,
+                      contribution: contribution
+                    });
+                  })
               })
           })
       });
@@ -53,12 +62,7 @@ class Songdetail extends Component {
   render() {
     const song = this.state.song;
     const photo = this.state.photo;
-    const owner = this.state.owner;
     const contribution = this.state.contribution;
-    console.log(song);
-    console.log(owner);
-    console.log(photo);
-    console.log(contribution);
 
     return (
       <div className="Songdetail">
@@ -75,7 +79,7 @@ class Songdetail extends Component {
             src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
             alt={photo.title}
           />
-          <div class="attribution"><a href={contribution.photoUrl}>Photo</a> by <a href={contribution.ownerUrl}>{contribution.ownerName}</a> / <a href=""> CC BY 2.0</a></div>
+          <div className="attribution"><a href={contribution.photoUrl} target="_blank" rel="noopener noreferrer">Photo</a> by <a href={contribution.ownerUrl} target="_blank" rel="noopener noreferrer">{contribution.ownerName}</a> / <a href={contribution.licenseUrl} target="_blank" rel="noopener noreferrer">{contribution.licenseName}</a></div>
         </aside>
       </div>
     );
