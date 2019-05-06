@@ -115,6 +115,7 @@ html {
   color: white;
   font-size: 0.9em;
   font-weight: 300;
+  display: inline;
 }
 
 .freebsd-logo {

@@ -24,9 +24,11 @@ class App extends Component {
     var user = 'info',
     domain = 'voornameninliedjes.nl',
     element = document.getElementById('footerText');
-    const text = '&copy; 2019 OrangeFlamingo '
 
-    element.innerHTML = text + user + '@' + domain;
+    const email = user + '@' + domain;
+
+    element.innerHTML = email;
+    element.setAttribute('href', 'mailto:' + email);
 
     axios.get(API)
       .then(response => {
@@ -47,7 +49,7 @@ class App extends Component {
               <Route path="/song/:id" component={Songdetail} />
             </Switch>
           </content>
-          <footer className="app-footer"><p></p><h1 id="footerText">foo@bar.com</h1><a href="https://freebsd.org" target="blank"><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></a></footer>
+          <footer className="app-footer"><p></p><div><h1>&copy; 2019 OrangeFlamingo </h1><a id="footerText" href="http://foo.bar">e-mail</a></div><a href="https://freebsd.org" target="blank"><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></a></footer>
         </div>
       </Router>
     );
