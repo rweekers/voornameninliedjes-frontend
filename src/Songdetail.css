@@ -99,3 +99,5 @@
   background-color: #1db954;
   height: 80px;
 }
+
+.attribution p { word-break: break-all }

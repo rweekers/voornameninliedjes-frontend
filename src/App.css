@@ -46,7 +46,7 @@ html {
   padding: 0 0 0 10%;
 }
 
-.app-logo:hover {
+.app-logo {
   animation: app-logo-spin infinite 20s linear;
 }
 

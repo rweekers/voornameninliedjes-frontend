@@ -17,7 +17,10 @@ class Songdetail extends Component {
       song: '',
       photo: '',
       owner: '',
-      contribution: ''
+      contribution: '',
+      hasWikiPhoto: false,
+      wikiPhotoUrl: '',
+      wikiPhotoAttribution: ''
     };
   }
 
@@ -27,6 +30,14 @@ class Songdetail extends Component {
     axios.get(API + songId)
       .then(res => {
         const song = res.data;
+        if (song.wikimediaPhotos.length > 0) {
+          const wikiPhoto = song.wikimediaPhotos[0];
+          this.setState({
+            hasWikiPhoto: true,
+            wikiPhotoUrl: wikiPhoto.url,
+            wikiPhotoAttribution: wikiPhoto.attribution
+          });
+        }
         axios.get(FLICKR_PHOTO_DETAIL + song.flickrPhotos[0])
           .then(res => {
             const photo = res.data.photo;
@@ -63,6 +74,9 @@ class Songdetail extends Component {
     const song = this.state.song;
     const photo = this.state.photo;
     const contribution = this.state.contribution;
+    const wikiPhotoUrl = this.state.wikiPhotoUrl;
+    const wikiPhotoAttribution = this.state.wikiPhotoAttribution;
+    const hasWikiPhoto = this.state.hasWikiPhoto;
 
     return (
       <div className="Songdetail">
@@ -75,11 +89,22 @@ class Songdetail extends Component {
           <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`} width="100%" height="100%" title={song.title}></iframe>
         </aside>
         <aside className="song-photos">
-          <img
-            src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
-            alt={photo.title}
-          />
-          <div className="attribution"><a href={contribution.photoUrl} target="_blank" rel="noopener noreferrer">Photo</a> by <a href={contribution.ownerUrl} target="_blank" rel="noopener noreferrer">{contribution.ownerName}</a> / <a href={contribution.licenseUrl} target="_blank" rel="noopener noreferrer">{contribution.licenseName}</a></div>
+          {hasWikiPhoto ? (
+            <div>
+              <img
+                src={wikiPhotoUrl}
+              />
+              <div className="attribution"><p>{wikiPhotoAttribution}</p></div>
+            </div>
+          ) : (
+              <div>
+                <img
+                  src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+                  alt={photo.title}
+                />
+                <div className="attribution"><a href={contribution.photoUrl} target="_blank" rel="noopener noreferrer">Photo</a> by <a href={contribution.ownerUrl} target="_blank" rel="noopener noreferrer">{contribution.ownerName}</a> / <a href={contribution.licenseUrl} target="_blank" rel="noopener noreferrer">{contribution.licenseName}</a></div>
+              </div>
+            )}
         </aside>
       </div>
     );
