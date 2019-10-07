@@ -33,40 +33,42 @@ class Songdetail extends Component {
         if (song.wikimediaPhotos.length > 0) {
           const wikiPhoto = song.wikimediaPhotos[0];
           this.setState({
+            song: song,
             hasWikiPhoto: true,
             wikiPhotoUrl: wikiPhoto.url,
             wikiPhotoAttribution: wikiPhoto.attribution
           });
+        } else {
+          axios.get(FLICKR_PHOTO_DETAIL + song.flickrPhotos[0])
+            .then(res => {
+              const photo = res.data.photo;
+              axios.get(FLICKR_USER_DETAIL + photo.owner.nsid)
+                .then(res => {
+                  const owner = res.data.person;
+                  axios.get(FLICKR_LICENCES)
+                    .then(res => {
+                      const licenses = res.data.licenses.license;
+                      const license = licenses.find(x => x.id === photo.license);
+                      const licenseName = license.name;
+                      const licenseUrl = license.url;
+                      const contribution = {
+                        'ownerName': owner.username._content,
+                        'ownerUrl': owner.photosurl._content,
+                        'photoTitle': photo.title._content,
+                        'photoUrl': photo.urls.url[0]._content,
+                        'licenseName': licenseName,
+                        'licenseUrl': licenseUrl
+                      };
+                      this.setState({
+                        song: song,
+                        photo: photo,
+                        owner: owner,
+                        contribution: contribution
+                      });
+                    })
+                })
+            })
         }
-        axios.get(FLICKR_PHOTO_DETAIL + song.flickrPhotos[0])
-          .then(res => {
-            const photo = res.data.photo;
-            axios.get(FLICKR_USER_DETAIL + photo.owner.nsid)
-              .then(res => {
-                const owner = res.data.person;
-                axios.get(FLICKR_LICENCES)
-                  .then(res => {
-                    const licenses = res.data.licenses.license;
-                    const license = licenses.find(x => x.id === photo.license);
-                    const licenseName = license.name;
-                    const licenseUrl = license.url;
-                    const contribution = {
-                      'ownerName': owner.username._content,
-                      'ownerUrl': owner.photosurl._content,
-                      'photoTitle': photo.title._content,
-                      'photoUrl': photo.urls.url[0]._content,
-                      'licenseName': licenseName,
-                      'licenseUrl': licenseUrl
-                    };
-                    this.setState({
-                      song: song,
-                      photo: photo,
-                      owner: owner,
-                      contribution: contribution
-                    });
-                  })
-              })
-          })
       });
   }
 
@@ -74,9 +76,9 @@ class Songdetail extends Component {
     const song = this.state.song;
     const photo = this.state.photo;
     const contribution = this.state.contribution;
+    const hasWikiPhoto = this.state.hasWikiPhoto;
     const wikiPhotoUrl = this.state.wikiPhotoUrl;
     const wikiPhotoAttribution = this.state.wikiPhotoAttribution;
-    const hasWikiPhoto = this.state.hasWikiPhoto;
 
     return (
       <div className="Songdetail">
@@ -92,7 +94,7 @@ class Songdetail extends Component {
           {hasWikiPhoto ? (
             <div>
               <img
-                src={wikiPhotoUrl}
+                src={wikiPhotoUrl} alt={song.artist}
               />
               <div className="attribution"><p>{wikiPhotoAttribution}</p></div>
             </div>
