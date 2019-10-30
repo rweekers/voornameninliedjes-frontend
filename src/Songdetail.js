@@ -88,7 +88,7 @@ class Songdetail extends Component {
           <iframe src={`https://open.spotify.com/embed/track/${song.spotify}`} className="spotify" width="100%" height="100%" title={song.title} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </aside>
         <aside className="song-youtube">
-          <iframe src={`https://www.youtube.com/embed/${song.youtube}?rel=0`} width="100%" height="100%" title={song.title}></iframe>
+          <iframe src={`https://www.youtube-nocookie.com/embed/${song.youtube}?rel=0`} width="100%" height="100%" title={song.title}></iframe>
         </aside>
         <aside className="song-photos">
           {hasWikiPhoto ? (
