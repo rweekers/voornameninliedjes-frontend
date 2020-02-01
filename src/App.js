@@ -27,9 +27,11 @@ class App extends Component {
 
     const email = user + '@' + domain;
 
-    element.innerHTML = email;
-    element.setAttribute('href', 'mailto:' + email);
-
+    if (element != null) {
+      element.innerHTML = email;
+      element.setAttribute('href', 'mailto:' + email);
+    }
+    
     axios.get(API)
       .then(response => {
         this.setState({ songs: response.data });

@@ -78,6 +78,8 @@ html {
 }
 
 .app-section {
+  padding-top: 3%;
+  padding-bottom: 1%;
   grid-area: content;
   background-color: #282c34;
   display: flex;
