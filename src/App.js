@@ -51,7 +51,7 @@ class App extends Component {
               <Route path="/song/:id" component={Songdetail} />
             </Switch>
           </content>
-          <footer className="app-footer"><p></p><div><h1>&copy; 2019 OrangeFlamingo </h1><a id="footerText" href="http://foo.bar">e-mail</a></div><a href="https://freebsd.org" target="blank"><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></a></footer>
+          <footer className="app-footer"><p></p><div><h1>&copy; 2020 OrangeFlamingo </h1><a id="footerText" href="http://foo.bar">e-mail</a></div><a href="https://freebsd.org" target="blank"><img src={logofreebsd} className="freebsd-logo" alt="logo-freebsd" /></a></footer>
         </div>
       </Router>
     );
